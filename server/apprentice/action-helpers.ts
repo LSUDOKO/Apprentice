@@ -49,3 +49,53 @@ export function domainAction(name: DomainActionName, summary: (args: Record<stri
     run: (args: DomainArgs, ctx?: ActionRunContext) => mutateIssue(ctx, name, args),
   };
 }
+
+const featureField = z.enum([
+  "kind",
+  "labels",
+  "hasVersion",
+  "versionMentioned",
+  "hasRepro",
+  "hasStackTrace",
+  "hasCodeBlock",
+  "bodyLength",
+  "titleLength",
+  "mentionsDocs",
+  "mentionsComponent",
+  "isLikelySpam",
+  "priority",
+  "component",
+  "assignee",
+  "state",
+  "authorIsFirstTime",
+]);
+
+export const conditionSchema = z.union([
+  z.object({ field: featureField, op: z.enum(["eq", "neq"]), value: z.union([z.string(), z.number(), z.boolean(), z.null()]) }),
+  z.object({ field: z.literal("labels"), op: z.enum(["includes", "excludes"]), value: z.string().min(1) }),
+  z.object({ field: z.enum(["title", "body"]), op: z.literal("matches"), value: z.string().min(1).max(200) }),
+  z.object({ field: featureField, op: z.enum(["isEmpty", "isNotEmpty"]) }),
+]);
+
+export const triggerSchema = z
+  .object({
+    all: z.array(conditionSchema).max(8).describe("Conditions that must all hold (AND)"),
+    judgment: z.string().max(400).nullable().optional().describe("Optional yes/no question the agent answers per issue"),
+  })
+  .describe("Playbook trigger");
+
+export const paramSchema = z.union([
+  z.object({ owner: z.literal("fixed"), value: z.unknown() }),
+  z.object({ owner: z.literal("fromItem"), path: z.string().min(1) }),
+  z.object({ owner: z.literal("agent"), instruction: z.string().min(1).max(400) }),
+]);
+
+export const stepSpecSchema = z.object({
+  id: z.string().min(1).describe("Stable step id, e.g. s1"),
+  action: z.string().min(1).describe("Domain action name, e.g. label-issue"),
+  params: z.record(z.string(), paramSchema).describe("Param → owner: fixed value, fromItem path, or agent instruction"),
+  checkpoint: z.boolean().default(false).describe("Always ask the human before this step (until Auto)"),
+  destructive: z.boolean().default(false),
+});
+
+export const expectedStepSchema = z.object({ action: z.string().min(1), args: z.record(z.string(), z.unknown()) });

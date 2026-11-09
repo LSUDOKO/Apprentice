@@ -279,7 +279,7 @@ export async function updatePlaybook(
   scope: Scope,
   playbookId: string,
   patch: UpdatePatch,
-  opts: { changeNote?: string; saveAsDraft?: boolean },
+  opts: { changeNote?: string | undefined; saveAsDraft?: boolean | undefined },
 ): Promise<{ playbook: PlaybookRow; tests: TestOutcome[] }> {
   const pb = await requirePlaybook(scope, playbookId);
   const trigger = patch.trigger ?? pb.trigger;

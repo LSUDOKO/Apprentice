@@ -51,7 +51,7 @@ export async function startLesson(scope: Scope) {
   );
 }
 
-export async function finishLesson(scope: Scope, input: { lessonId: string; recorderReport: unknown; narration?: string | undefined; cancel?: boolean | undefined }) {
+export async function finishLesson(scope: Scope, input: { lessonId: string; recorderReport?: unknown; narration?: string | undefined; cancel?: boolean | undefined }) {
   const [lesson] = await getDb()
     .select()
     .from(schema.lessons)

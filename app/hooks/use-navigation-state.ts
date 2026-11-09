@@ -18,13 +18,20 @@ export interface NavigationState {
   path?: string;
   publicPath?: string;
   threadId?: string;
+  issueId?: string;
+  playbookId?: string;
+  tab?: string;
+  runId?: string;
+  decisionId?: string;
+  compare?: string[];
+  filter?: string;
 }
 
 export function useNavigationState() {
   useAgentRouteState<NavigationState>({
     browserTabId: TAB_ID,
     requestSource: TAB_ID,
-    getNavigationState: ({ pathname }) => navigationStateForPath(pathname),
+    getNavigationState: ({ pathname, searchParams }) => navigationStateForPath(pathname, searchParams),
     getCommandPath: commandPathForNavigation,
   });
 }
@@ -62,17 +69,50 @@ function matchesPathPrefix(pathname: string, prefix: string): boolean {
   return pathname === prefix || pathname.startsWith(`${prefix}/`);
 }
 
-export function navigationStateForPath(pathname: string): NavigationState {
+function decoded(value: string | undefined): string | undefined {
+  if (!value) return undefined;
+  try {
+    return decodeURIComponent(value);
+  } catch {
+    return value;
+  }
+}
+
+export function navigationStateForPath(pathname: string, searchParams?: URLSearchParams): NavigationState {
   const threadId = threadIdFromPath(pathname);
+  const issueId = decoded(pathname.match(/^\/issues\/([^/]+)/)?.[1]);
+  const playbookId = decoded(pathname.match(/^\/playbooks\/([^/]+)/)?.[1]);
+  const get = (k: string) => searchParams?.get(k) ?? undefined;
+  const a = get("a");
+  const b = get("b");
+  const tab = playbookId ? (get("tab") ?? "recipe") : undefined;
+  const runId = pathname.startsWith("/review") ? get("run") : undefined;
+  const decisionId = pathname.startsWith("/review") ? get("decision") : undefined;
+  const filter = pathname.startsWith("/issues") ? get("filter") : undefined;
   return {
     view: viewForPath(pathname),
     path: pathname,
     publicPath: appPathFromLocalRoute(pathname),
     ...(threadId ? { threadId } : {}),
+    ...(issueId ? { issueId } : {}),
+    ...(playbookId ? { playbookId } : {}),
+    ...(tab ? { tab } : {}),
+    ...(runId ? { runId } : {}),
+    ...(decisionId ? { decisionId } : {}),
+    ...(filter ? { filter } : {}),
+    ...(pathname.startsWith("/compare") && a && b ? { compare: [a, b] } : {}),
   };
 }
 
 function viewForPath(pathname: string): string {
+  if (pathname.startsWith("/issues")) return pathname === "/issues" ? "queue" : "issue";
+  if (pathname.startsWith("/playbooks")) return pathname === "/playbooks" ? "playbooks" : "playbook";
+  if (pathname.startsWith("/review")) return "review";
+  if (pathname.startsWith("/exceptions")) return "exceptions";
+  if (pathname.startsWith("/insights")) return "insights";
+  if (pathname.startsWith("/lessons")) return "lessons";
+  if (pathname.startsWith("/compare")) return "compare";
+  if (pathname.startsWith("/preferences")) return "apprentice-settings";
   if (isChatPathname(pathname)) return "chat";
   if (pathname === HOME_PATH) return "home";
   if (pathname.startsWith("/database")) return "database";
@@ -88,6 +128,22 @@ function viewForPath(pathname: string): string {
 
 function pathForView(view?: string): string {
   switch (view) {
+    case "queue":
+    case "issue":
+      return "/issues";
+    case "playbooks":
+    case "playbook":
+      return "/playbooks";
+    case "review":
+      return "/review";
+    case "exceptions":
+      return "/exceptions";
+    case "insights":
+      return "/insights";
+    case "lessons":
+      return "/lessons";
+    case "apprentice-settings":
+      return "/preferences";
     case "chat":
     case "ask":
       return NEW_CHAT_PATH;
@@ -106,7 +162,7 @@ function pathForView(view?: string): string {
     case "team":
       return "/settings/organization";
     default:
-      return HOME_PATH;
+      return "/issues";
   }
 }
 

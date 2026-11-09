@@ -1,5 +1,4 @@
 import { navigateWithAgentChatViewTransition } from "@agent-native/core/client/agent-chat";
-import { useT } from "@agent-native/core/client/i18n";
 import { focusAgentChat } from "@agent-native/toolkit/app/chat";
 import { AgentSidebar } from "@agent-native/toolkit/app/chat";
 import { type ReactNode } from "react";
@@ -22,7 +21,6 @@ export function AgentInspector({
   chatHomeHandoffPending,
 }: AgentInspectorProps) {
   const navigate = useNavigate();
-  const t = useT();
 
   function openAskAgentFullscreen(threadId?: string) {
     focusAgentChat();
@@ -39,13 +37,9 @@ export function AgentInspector({
       browserTabId={TAB_ID}
       openOnChatRunning={chatHomeHandoffActive}
       onFullscreenRequest={openAskAgentFullscreen}
-      emptyStateText={t("chat.inspectEmptyState")}
+      emptyStateText="I'm Apprentice. I learn your triage by watching, then earn the right to do it for you."
       agentPageHref="/settings/agent"
-      suggestions={[
-        t("chat.inspectSuggestionCapabilities"),
-        t("chat.inspectSuggestionHello"),
-        t("chat.inspectSuggestionAction"),
-      ]}
+      suggestions={["What have I been doing today?", "Run my playbooks on new issues", "Which playbooks are ready to promote?", "Why did you do that?"]}
     >
       {children}
     </AgentSidebar>

@@ -21,6 +21,7 @@ import {
 } from "react-router";
 import type { LinksFunction } from "react-router";
 
+import { GlobalShortcuts } from "@/components/apprentice/WorkspaceChrome";
 import { Layout as AppLayout } from "@/components/layout/Layout";
 import { AppToolkitProvider } from "@/components/ui/toolkit-provider";
 import { useNavigationState } from "@/hooks/use-navigation-state";
@@ -168,6 +169,7 @@ function AppContent() {
           <ThemeToggleItem />
         </CommandMenu.Group>
       </CommandMenu>
+      <GlobalShortcuts />
       <AppLayout>
         <Outlet />
       </AppLayout>

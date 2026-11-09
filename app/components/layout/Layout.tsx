@@ -30,6 +30,7 @@ import { TAB_ID } from "@/lib/tab-id";
 // Not lazy() like Header: the inspector wraps the page, so a Suspense fallback
 // would mount the page once before its chunk loads and again after.
 // AgentSidebar already lazy-loads its own panel.
+import { WorkspaceBanners } from "../apprentice/WorkspaceChrome";
 import { AgentInspector } from "./AgentInspector";
 import { MobileAppBar } from "./MobileAppBar";
 import { Sidebar } from "./Sidebar";
@@ -163,6 +164,7 @@ function LayoutShell({ children }: LayoutProps) {
           <Header onOpenMobileSidebar={openMobileSidebar} />
         </Suspense>
       )}
+      {isChatRoute || settingsOwnsChrome ? null : <WorkspaceBanners />}
       <main className="agent-native-app-main min-w-0 flex-1 overflow-y-auto overscroll-contain">
         {children}
       </main>

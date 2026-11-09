@@ -1,4 +1,8 @@
-@import "@fontsource-variable/inter";
+@import "@fontsource/ibm-plex-sans/400.css";
+@import "@fontsource/ibm-plex-sans/500.css";
+@import "@fontsource/ibm-plex-sans/600.css";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
 
 @import "tailwindcss";
 @import "@agent-native/toolkit/styles.css";
@@ -259,11 +263,100 @@
   --sidebar-ring: 0 0% 60%;
 }
 
+
+/* ---------- Apprentice: "The Workshop Ledger" ---------- */
+:root {
+  --background: 40 37% 97%;
+  --foreground: 43 13% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 43 13% 10%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 43 13% 10%;
+  --primary: 17 88% 40%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 40 33% 93%;
+  --secondary-foreground: 43 13% 10%;
+  --muted: 40 33% 93%;
+  --muted-foreground: 39 9% 39%;
+  --accent: 40 33% 93%;
+  --accent-foreground: 43 13% 10%;
+  --border: 40 24% 88%;
+  --input: 40 24% 88%;
+  --ring: 17 88% 40%;
+  --sidebar-background: 42 31% 94%;
+  --sidebar-foreground: 39 9% 39%;
+  --sidebar-primary: 17 88% 40%;
+  --sidebar-accent: 40 33% 93%;
+  --sidebar-accent-foreground: 43 13% 10%;
+  --sidebar-border: 40 24% 88%;
+  --sidebar-ring: 17 88% 40%;
+  --param-fixed: #57534e;
+  --param-item: #0f766e;
+  --param-agent: #6d28d9;
+  --ok: #15803d;
+  --warn: #b45309;
+  --bad: #b91c1c;
+  --radius: 0.375rem;
+}
+.dark {
+  --background: 48 14% 7%;
+  --foreground: 40 32% 93%;
+  --card: 48 10% 10%;
+  --card-foreground: 40 32% 93%;
+  --popover: 48 10% 10%;
+  --popover-foreground: 40 32% 93%;
+  --primary: 25 95% 53%;
+  --primary-foreground: 48 14% 7%;
+  --secondary: 50 9% 13%;
+  --secondary-foreground: 40 32% 93%;
+  --muted: 50 9% 13%;
+  --muted-foreground: 39 10% 60%;
+  --accent: 50 9% 13%;
+  --accent-foreground: 40 32% 93%;
+  --border: 45 10% 16%;
+  --input: 45 10% 16%;
+  --ring: 25 95% 53%;
+  --sidebar-background: 45 14% 5%;
+  --sidebar-foreground: 39 10% 60%;
+  --sidebar-primary: 25 95% 53%;
+  --sidebar-accent: 50 9% 13%;
+  --sidebar-accent-foreground: 40 32% 93%;
+  --sidebar-border: 45 10% 16%;
+  --sidebar-ring: 25 95% 53%;
+  --param-fixed: #a8a29e;
+  --param-item: #2dd4bf;
+  --param-agent: #a78bfa;
+  --ok: #4ade80;
+  --warn: #fbbf24;
+  --bad: #f87171;
+}
+@theme inline {
+  --color-param-fixed: var(--param-fixed);
+  --color-param-item: var(--param-item);
+  --color-param-agent: var(--param-agent);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-bad: var(--bad);
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+}
+.tabular { font-variant-numeric: tabular-nums; }
+.ap-fade-in { animation: ap-fade 160ms ease-out both; }
+.ap-slide-in { animation: ap-slide 180ms ease-out both; }
+@keyframes ap-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes ap-slide { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .ap-fade-in, .ap-slide-in { animation: none; }
+}
+.ap-markdown pre { background: hsl(var(--muted)); border: 1px solid hsl(var(--border)); border-radius: 6px; padding: 10px 12px; overflow-x: auto; font-size: 12px; }
+.ap-markdown code { font-family: var(--font-mono); font-size: 0.92em; }
+.ap-markdown p { margin: 0 0 0.6em; }
+.ap-markdown ul, .ap-markdown ol { margin: 0 0 0.6em 1.2em; list-style: revert; }
+
 @layer base {
   body {
     @apply bg-background text-foreground;
-    font-family: "Inter Variable", "Inter", sans-serif;
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    font-size: 14px;
   }
 }
 

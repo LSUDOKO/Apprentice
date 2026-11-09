@@ -4,6 +4,7 @@ import {
 } from "@agent-native/toolkit/app-shell";
 import { AgentToggleButton } from "@agent-native/toolkit/app/chat";
 
+import { StatusPills } from "../apprentice/WorkspaceChrome";
 import { MobileAppBar } from "./MobileAppBar";
 
 interface HeaderProps {
@@ -22,6 +23,7 @@ export function Header({ onOpenMobileSidebar }: HeaderProps) {
       actions={
         <>
           {actions}
+          <StatusPills />
           <AgentToggleButton />
         </>
       }

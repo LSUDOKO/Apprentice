@@ -117,7 +117,7 @@ describe("Apprentice loop", () => {
   });
 
   it("acts at level 3, explains itself and undoes a whole run", async () => {
-    const [{ id: pbId }] = (await getDbExec().execute({ sql: "SELECT id FROM playbooks WHERE owner_email = ?", args: [ME] })).rows as { id: string }[];
+    const pbId = ((await getDbExec().execute({ sql: "SELECT id FROM playbooks WHERE owner_email = ?", args: [ME] })).rows as { id: string }[])[0]!.id;
     // Draft-level decisions approved by the human count toward Act.
     await getDbExec().execute({ sql: "UPDATE playbooks SET trust_level = 3 WHERE id = ?", args: [pbId] });
     const { simulateIncoming } = await import("../services/seed.js");
