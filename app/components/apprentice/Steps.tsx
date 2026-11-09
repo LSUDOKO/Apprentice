@@ -72,7 +72,7 @@ export function ResolvedSteps({ steps, instructions }: { steps: ResolvedLike[]; 
           {s.pendingAgentParams.map((p) =>
             instructions?.[s.stepId]?.[p] ? (
               <p key={p} className="mt-1 text-xs text-param-agent">
-                ✦ {p}: {instructions[s.stepId]?.[p]}
+                ✦ {p}: {(instructions[s.stepId]?.[p] ?? "").length > 160 ? `${(instructions[s.stepId]?.[p] ?? "").slice(0, 157)}…` : instructions[s.stepId]?.[p]}
               </p>
             ) : null,
           )}

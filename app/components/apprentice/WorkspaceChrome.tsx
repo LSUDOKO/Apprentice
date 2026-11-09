@@ -186,8 +186,8 @@ const SHORTCUTS: [string, string][] = [
 const GO: Record<string, string> = { q: "/issues", r: "/review", e: "/exceptions", p: "/playbooks", i: "/insights", l: "/lessons", s: "/preferences" };
 
 export function isTypingTarget(target: EventTarget | null): boolean {
-  const el = target as HTMLElement | null;
-  if (!el) return false;
+  if (!(target instanceof HTMLElement)) return false;
+  const el = target;
   return el.isContentEditable || ["INPUT", "TEXTAREA", "SELECT"].includes(el.tagName) || !!el.closest("[data-agent-chat], .agentkit-composer-stack, [role='dialog']");
 }
 
