@@ -2,9 +2,9 @@
 
 **Show it once, delegate forever.** Apprentice is an [Agent-Native](https://www.agent-native.com) app where the agent learns your job by watching you do it. It proves what it learned, then earns autonomy one step at a time.
 
-Built for the [Builder.io Agent-Native Hackathon](https://www.builder.io/hackathon).
+Built for the [Builder.io Agent-Native Hackathon](https://www.builder.io/hackathon). **Website: [apprentice-agent.pages.dev](https://apprentice-agent.pages.dev)**
 
-![The pattern card: Apprentice noticed what you did twice](docs/screenshots/01-pattern-card.png)
+![Apprentice in 18 seconds: pattern card, playbook, backtest, review, tests, promotion, provenance, insights](docs/demo.gif)
 
 ## The problem
 
@@ -22,7 +22,7 @@ In Agent-Native, the UI and the agent call **the same typed actions**. Every cli
 | **Notice** | After two similar demonstrations, Apprentice proposes a playbook. It infers a discriminative trigger from your history, and decides for each parameter whether it is *fixed*, *from the issue* or *agent decides*. | Pattern card |
 | **Assist** | Before the playbook even exists, a ghost chip predicts your next step. Press `Tab` to run it through the same action. | Issue action bar |
 | **Edit** | A visual recipe: trigger → steps → checkpoints, with color-coded parameter owners. Every save is a new version, and the recipe is regenerated as a `SKILL.md`. | Playbook editor |
-| **Prove** | It backtests against your own history ("matched 17, agreed 14") and updates live as you toggle conditions. **Every correction you make becomes a regression test**, and promotions or edits that break a test are blocked. | Backtest · Tests |
+| **Prove** | It backtests against your own history ("matched 18, agreed 15") and updates live as you toggle conditions. **Every correction you make becomes a regression test**, and promotions or edits that break a test are blocked. | Backtest · Tests |
 | **Trust** | 0 Watch · 1 Suggest (shadow mode) · 2 Draft (asks first) · 3 Act (with undo) · 4 Auto. Promotion needs evidence and a human click. An override at Act demotes it automatically. | Trust ladder · Review |
 | **Scale** | A scheduled autopilot runs your playbooks and posts a digest. You can review a batch from Claude or ChatGPT through MCP Apps, and export each skill for any agent. | Insights · Settings |
 
@@ -70,7 +70,7 @@ pnpm dev                     # opens http://localhost:8080
 4. **Make playbook** → Backtest → **Run on untriaged** → review with `a` / `o`. Override #38 with "shouldn't apply" and it becomes test #3.
 5. Fix the trigger (add *has a code block = false*) → **Promote to Draft** → Settings › **Simulate 4 new issues** → run → *Approve & apply* → **Promote to Act** → run again, and it acts on its own. Then **Undo run**.
 
-For the agent (chat, voice, Draft-level approvals, the generative-UI tuner, evals), add an LLM key to `.env` (`ANTHROPIC_API_KEY=…` or `OPENAI_API_KEY=…`) or connect Builder.io from the app.
+For the agent (chat, voice, Draft-level approvals, the generative-UI tuner, evals), add an LLM key to `.env` (`ANTHROPIC_API_KEY=…`, `OPENAI_API_KEY=…` or `GROQ_API_KEY=…`) or connect Builder.io from the app.
 
 ```bash
 pnpm typecheck               # TypeScript strict
@@ -94,6 +94,7 @@ app/components/apprentice/     trust ladder, param chips, recipe editor, ghost c
 .agents/skills/                agent skills;  AGENTS.md  agent instructions
 evals/                         agent-behavior eval gate
 apprentice-build-kit/          the original spec this was built from
+landing/                       marketing site (Vite + React + Framer Motion), deployed to Cloudflare Pages
 ```
 
 ## Built during the hackathon

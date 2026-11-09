@@ -12,7 +12,8 @@
 
 | Package | Why |
 |---|---|
-| `@fontsource/ibm-plex-sans`, `@fontsource/ibm-plex-mono` | Self-hosted fonts for the "Workshop Ledger" design |
+| `@fontsource-variable/geist`, `@fontsource-variable/geist-mono` | Self-hosted fonts for the dark "Eclipse" design |
+| `framer-motion`, `vite`, `@vitejs/plugin-react` (in `landing/` only) | Landing site scroll animations and build |
 
 ## Built new
 
@@ -20,9 +21,10 @@
 - **Services** (`server/apprentice/services/`): the single issue-mutation path shared by humans, the agent and the executor; watch-mode step recording; pattern detection; playbooks with versions and the test gate; runs, decisions and the executor with batch undo and conflict protection; provenance (incl. framework audit log); exceptions; insights; digest; autopilot; GitHub import; lessons (Recorder); deterministic seed.
 - **~50 actions** (`actions/`), including the `needsApproval` trust-ladder predicate on every domain action, `review-batch` with `embedRoute`, `export-skill`, `install-autopilot`, `view-screen` and `focus-issue`.
 - **Database:** 15 tables (`server/db/schema.ts`) with additive migrations.
-- **UI:** Workshop Ledger theme; nav rail with badges; watch indicator; Queue and Issue detail (label/priority/component/assignee editors, repro/duplicate/close dialogs, activity timeline with "Why?"); pattern card with Team-mode conflict; ghost chip; playbook editor (Recipe, Backtest with live toggles, Tests, Provenance, History, SKILL.md); Review split view with keyboard verdicts and correction sheet; Exceptions; Insights; Lessons with narration mic; Compare; Settings; `?` shortcuts overlay.
+- **UI:** dark "Eclipse" theme (light variant kept); nav rail with badges; watch indicator; Queue and Issue detail (label/priority/component/assignee editors, repro/duplicate/close dialogs, activity timeline with "Why?"); pattern card with Team-mode conflict; ghost chip; playbook editor (Recipe, Backtest with live toggles, Tests, Provenance, History, SKILL.md); Review split view with keyboard verdicts and correction sheet; Exceptions; Insights; Lessons with narration mic; Compare; Settings; `?` shortcuts overlay.
 - **Agent:** `AGENTS.md` Apprentice section, system prompt, primary tool list, four skills (`triage-domain`, `apprentice-teacher`, `playbook-runner`, `shadow-reviewer`), autopilot job template, `evals/apprentice.eval.ts`.
 - **Tests:** 55 Vitest tests (engine units + full-loop integration on PGlite).
+- **Landing site** (`landing/`): Vite + React + Framer Motion, scroll-driven sections, deployed to Cloudflare Pages at https://apprentice-agent.pages.dev.
 - **Seed data generator** (`scripts/generate-seed.ts`) and committed JSON: 68 invented issues plus demonstration history.
 
 ## Changed in the template

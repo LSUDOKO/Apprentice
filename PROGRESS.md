@@ -15,7 +15,7 @@ Spec: `apprentice-build-kit/` (docs 00–13). Framework: `@agent-native/core` **
 | 6 Scale out (F13, F16, F17, F20) | Done | `run-autopilot`, `build-digest`, `install-autopilot` (Agent Resources job), Insights + digests, MCP catalog + `review-batch` `embedRoute`, export skill (zip) |
 | 7 Wow (F14, F15, F19) | Done | Lessons with Recorder report + narration mic, voice intents in AGENTS.md, Team-mode conflict card + `resolve-conflict` |
 | 7 Wow (F18 sub-agent backtests) | Not built | Judgments are resolved sequentially by the agent (`resolve-judgments`) |
-| 8 Polish | Partial | Light theme reviewed in the browser on every screen except Compare; dark theme spot-checked (playbook editor); keyboard map + `?` overlay; empty/loading/error states. |
+| 8 Polish | Done | Dark "Eclipse" theme is the default and was reviewed in the browser on every screen, Compare included (light variant kept); keyboard map + `?` overlay; empty/loading/error states. Landing site in `landing/`, live at https://apprentice-agent.pages.dev. |
 | 9 Stretch (F21–F23) | Not started | By design (cut order) |
 
 ## Verification
@@ -31,7 +31,7 @@ Spec: `apprentice-build-kit/` (docs 00–13). Framework: `@agent-native/core` **
 | 2–3 | Triage #31, #32 by hand → pattern card | ✅ the card appears immediately after the second demonstration (with Bob's conflict) |
 | 4 | Ghost chip on #33 after `needs-info`, Tab runs it | ✅ in the browser after Reset demo: Tab ×3 applied `+bug`, request repro, assign `triage` (each recorded as a demonstration) |
 | 5 | Make playbook → editor, 3 steps, owners, SKILL.md | ✅ |
-| 6 | Backtest numbers, toggle changes them | ✅ 29 considered · 17 matched · 14 agreed → toggling `kind` gives 25/14 |
+| 6 | Backtest numbers, toggle changes them | ✅ 30 considered · 18 matched · 15 agreed (after the demo triage of #31–#33) |
 | 7 | Agent "let me tune this" → inline sliders | ⏳ needs an LLM key (skill + `appAction` recipe in `apprentice-teacher`) |
 | 8 | Run → Review: approve 5, override 1 → "Saved as test" | ✅ "Saved as test #3" |
 | 9 | Override test blocks promotion; fix trigger → passing; breaking edit blocked | ✅ (blocked-edit path covered by the integration test) |
@@ -48,7 +48,7 @@ Spec: `apprentice-build-kit/` (docs 00–13). Framework: `@agent-native/core` **
 Also verified in the browser: **lesson recording** (Record → triage #67 → narration → Stop: lesson saved with 6 Recorder events, the narration and the captured demonstration).
 
 ### Needs an LLM key (not verified here)
-Agent chat replies, the Draft-level agent Approve/Deny pause, the generative-UI tuner, `resolve-judgments` by the agent, and `pnpm eval`. Add `ANTHROPIC_API_KEY` (or OpenAI or Builder) to `.env`.
+Agent chat replies, the Draft-level agent Approve/Deny pause, the generative-UI tuner, `resolve-judgments` by the agent, and `pnpm eval`. Add `ANTHROPIC_API_KEY` (or `OPENAI_API_KEY`, `GROQ_API_KEY`, or connect Builder) to `.env`.
 
 ## Framework API verification (installed types win over the spec sheet)
 

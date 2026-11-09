@@ -1,8 +1,5 @@
-@import "@fontsource/ibm-plex-sans/400.css";
-@import "@fontsource/ibm-plex-sans/500.css";
-@import "@fontsource/ibm-plex-sans/600.css";
-@import "@fontsource/ibm-plex-mono/400.css";
-@import "@fontsource/ibm-plex-mono/500.css";
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/geist-mono";
 
 @import "tailwindcss";
 @import "@agent-native/toolkit/styles.css";
@@ -264,71 +261,73 @@
 }
 
 
-/* ---------- Apprentice: "The Workshop Ledger" ---------- */
+/* ---------- Apprentice: "Eclipse" (Pretech-inspired) ---------- */
 :root {
-  --background: 40 37% 97%;
-  --foreground: 43 13% 10%;
-  --card: 0 0% 100%;
-  --card-foreground: 43 13% 10%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 43 13% 10%;
-  --primary: 17 88% 40%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 40 33% 93%;
-  --secondary-foreground: 43 13% 10%;
-  --muted: 40 33% 93%;
-  --muted-foreground: 39 9% 39%;
-  --accent: 40 33% 93%;
-  --accent-foreground: 43 13% 10%;
-  --border: 40 24% 88%;
-  --input: 40 24% 88%;
-  --ring: 17 88% 40%;
-  --sidebar-background: 42 31% 94%;
-  --sidebar-foreground: 39 9% 39%;
-  --sidebar-primary: 17 88% 40%;
-  --sidebar-accent: 40 33% 93%;
-  --sidebar-accent-foreground: 43 13% 10%;
-  --sidebar-border: 40 24% 88%;
-  --sidebar-ring: 17 88% 40%;
-  --param-fixed: #57534e;
+  --background: 69 30% 92%;
+  --foreground: 82 24% 7%;
+  --card: 67 40% 96%;
+  --card-foreground: 82 24% 7%;
+  --popover: 67 40% 96%;
+  --popover-foreground: 82 24% 7%;
+  --primary: 70 67% 21%;
+  --primary-foreground: 67 60% 92%;
+  --secondary: 70 26% 87%;
+  --secondary-foreground: 82 24% 7%;
+  --muted: 70 26% 87%;
+  --muted-foreground: 80 10% 35%;
+  --accent: 70 26% 87%;
+  --accent-foreground: 82 24% 7%;
+  --border: 71 22% 81%;
+  --input: 71 22% 81%;
+  --ring: 70 67% 21%;
+  --sidebar-background: 71 27% 88%;
+  --sidebar-foreground: 80 10% 35%;
+  --sidebar-primary: 70 67% 21%;
+  --sidebar-accent: 70 26% 87%;
+  --sidebar-accent-foreground: 82 24% 7%;
+  --sidebar-border: 71 22% 81%;
+  --sidebar-ring: 70 67% 21%;
+  --param-fixed: #5c6250;
   --param-item: #0f766e;
   --param-agent: #6d28d9;
-  --ok: #15803d;
-  --warn: #b45309;
-  --bad: #b91c1c;
+  --ok: #3f6212;
+  --warn: #a16207;
+  --bad: #b42318;
+  --halo: #4e5a12;
   --radius: 0.375rem;
 }
 .dark {
-  --background: 48 14% 7%;
-  --foreground: 40 32% 93%;
-  --card: 48 10% 10%;
-  --card-foreground: 40 32% 93%;
-  --popover: 48 10% 10%;
-  --popover-foreground: 40 32% 93%;
-  --primary: 25 95% 53%;
-  --primary-foreground: 48 14% 7%;
-  --secondary: 50 9% 13%;
-  --secondary-foreground: 40 32% 93%;
-  --muted: 50 9% 13%;
-  --muted-foreground: 39 10% 60%;
-  --accent: 50 9% 13%;
-  --accent-foreground: 40 32% 93%;
-  --border: 45 10% 16%;
-  --input: 45 10% 16%;
-  --ring: 25 95% 53%;
-  --sidebar-background: 45 14% 5%;
-  --sidebar-foreground: 39 10% 60%;
-  --sidebar-primary: 25 95% 53%;
-  --sidebar-accent: 50 9% 13%;
-  --sidebar-accent-foreground: 40 32% 93%;
-  --sidebar-border: 45 10% 16%;
-  --sidebar-ring: 25 95% 53%;
-  --param-fixed: #a8a29e;
-  --param-item: #2dd4bf;
-  --param-agent: #a78bfa;
-  --ok: #4ade80;
-  --warn: #fbbf24;
-  --bad: #f87171;
+  --background: 84 24% 4%;
+  --foreground: 68 31% 90%;
+  --card: 82 22% 7%;
+  --card-foreground: 68 31% 90%;
+  --popover: 82 22% 7%;
+  --popover-foreground: 68 31% 90%;
+  --primary: 69 84% 68%;
+  --primary-foreground: 84 24% 4%;
+  --secondary: 82 22% 10%;
+  --secondary-foreground: 68 31% 90%;
+  --muted: 82 22% 10%;
+  --muted-foreground: 75 11% 58%;
+  --accent: 82 22% 10%;
+  --accent-foreground: 68 31% 90%;
+  --border: 77 24% 15%;
+  --input: 77 24% 15%;
+  --ring: 69 84% 68%;
+  --sidebar-background: 90 22% 4%;
+  --sidebar-foreground: 75 11% 58%;
+  --sidebar-primary: 69 84% 68%;
+  --sidebar-accent: 82 22% 10%;
+  --sidebar-accent-foreground: 68 31% 90%;
+  --sidebar-border: 77 24% 15%;
+  --sidebar-ring: 69 84% 68%;
+  --param-fixed: #b4b9a4;
+  --param-item: #5eead4;
+  --param-agent: #c4b5fd;
+  --ok: #b5e655;
+  --warn: #f5c451;
+  --bad: #ff7a6b;
+  --halo: #ddf26b;
 }
 @theme inline {
   --color-param-fixed: var(--param-fixed);
@@ -337,7 +336,8 @@
   --color-ok: var(--ok);
   --color-warn: var(--warn);
   --color-bad: var(--bad);
-  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-mono: "Geist Mono Variable", ui-monospace, SFMono-Regular, monospace;
+  --color-halo: var(--halo);
 }
 .tabular { font-variant-numeric: tabular-nums; }
 .ap-fade-in { animation: ap-fade 160ms ease-out both; }
@@ -355,7 +355,8 @@
 @layer base {
   body {
     @apply bg-background text-foreground;
-    font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    font-family: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: -0.005em;
     font-size: 14px;
   }
 }
@@ -373,4 +374,22 @@
 }
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--muted-foreground) / 0.34);
+}
+
+/* Grain + faint grid: the Eclipse surface. Pointer-events none; stays behind content. */
+.dark .agent-native-app-main {
+  background-image:
+    radial-gradient(1200px 520px at 85% -10%, rgb(221 242 107 / 0.07), transparent 60%),
+    linear-gradient(rgb(236 238 223 / 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(236 238 223 / 0.025) 1px, transparent 1px);
+  background-size: auto, 64px 64px, 64px 64px;
+}
+.dark body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
