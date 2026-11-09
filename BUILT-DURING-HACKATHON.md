@@ -29,6 +29,10 @@
 - **Insights dashboard charts** (`app/components/apprentice/Charts.tsx`): hand-written SVG area, line, donut, ring and staircase charts; no chart library.
 - **Deployment:** Render web service on Neon Postgres (https://apprentice-agent.onrender.com).
 - **Framework patch** (`patches/@agent-native__core@0.226.0.patch`): adds Groq `openai/gpt-oss-120b` (and two others) to the framework's Groq model list and makes it the Groq default, because the listed llama models are not served to new Groq keys.
+- **Demo film** (`video/`): Remotion project; real app screenshots captured by a Playwright script (`video/capture/full.mjs`) against the running app with real issues imported from BuilderIO/agent-native; narration generated with Kokoro (open-source TTS); music and sound effects synthesized in code (`video/capture/music.py`, `sfx.py`), so no third-party audio.
+- **Pitch deck** (`docs/deck/`): HTML slides in the brand theme, printed to PDF.
+- **Repo docs for reviewers and coding agents**: `docs/ARCHITECTURE.md`, `docs/AGENT-NATIVE-EVIDENCE.md`, `llms.txt`.
+- **GitHub import fix**: the importer now pages past pull requests, so busy repos import their real issues.
 - **Seed data generator** (`scripts/generate-seed.ts`) and committed JSON: 68 invented issues plus demonstration history.
 
 ## Changed in the template

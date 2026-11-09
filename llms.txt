@@ -1,0 +1,44 @@
+# Apprentice
+
+> An Agent-Native app for issue triage. It records a maintainer's UI clicks as typed demonstrations, turns repeated patterns into editable playbooks, backtests them on the user's own history, turns every correction into a regression test, and earns autonomy on a trust ladder (Watch, Suggest, Draft, Act, Auto) built on the framework's `needsApproval` gate. Built for the Builder.io Agent-Native Hackathon, November 2026.
+
+Live app: https://apprentice-agent.onrender.com (demo login judge@apprentice-demo.dev / apprentice-demo-2026)
+Website: https://apprentice-agent.pages.dev
+Stack: Agent-Native 0.226 (React Router + Nitro), TypeScript strict, Drizzle, Postgres (Neon) / PGlite, Vitest.
+
+## Start here
+
+- [README.md](README.md): what it does, demo, rubric-to-evidence table, how to run
+- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md): system diagram, learning loop, trust ladder, data model, engine and services map
+- [docs/AGENT-NATIVE-EVIDENCE.md](docs/AGENT-NATIVE-EVIDENCE.md): every Agent-Native claim with file and line
+- [BUILT-DURING-HACKATHON.md](BUILT-DURING-HACKATHON.md): pre-existing template vs. new work
+- [PROGRESS.md](PROGRESS.md): verification log (tests, browser click-through, deployment)
+
+## Key code
+
+- [actions/](actions/): 62 `defineAction` files; the UI, agent, MCP, CLI and scheduler all call these
+- [server/apprentice/action-helpers.ts](server/apprentice/action-helpers.ts): `domainAction` wires `needsApproval`, audit target and the single write path
+- [server/apprentice/services/issues.ts](server/apprentice/services/issues.ts): `mutateIssue`, the only issue write path; decides demonstration vs. playbook execution
+- [server/apprentice/services/record-step.ts](server/apprentice/services/record-step.ts): records demonstrations with app-state snapshots
+- [server/apprentice/services/approval.ts](server/apprentice/services/approval.ts): the trust-ladder predicate
+- [server/apprentice/services/executor.ts](server/apprentice/services/executor.ts): runs, decisions, review, drift, undo, provenance
+- [server/apprentice/engine/](server/apprentice/engine/): pure TypeScript learning engine (features, patterns, trigger inference, backtest, tests, trust, prediction, SKILL.md)
+- [server/db/schema.ts](server/db/schema.ts): 15 tables
+- [app/routes/](app/routes/): UI screens; [app/components/apprentice/](app/components/apprentice/): domain components
+- [server/plugins/agent-chat.ts](server/plugins/agent-chat.ts): agent system prompt and tool registry
+- [.agents/skills/](.agents/skills/): triage-domain, apprentice-teacher, playbook-runner, shadow-reviewer
+- [AGENTS.md](AGENTS.md): instructions for the in-app agent at runtime (not a repo guide)
+
+## Verify
+
+- `pnpm install && pnpm typecheck` (clean)
+- `pnpm test` (55 tests, including the full-loop integration test in server/apprentice/__tests__/flow.test.ts)
+- `pnpm agent-native:doctor` (framework guards)
+- `pnpm dev`, then Load demo data at http://localhost:8080
+
+## Optional
+
+- [docs/video/VIDEO-SCRIPT.md](docs/video/VIDEO-SCRIPT.md): demo film script; [video/](video/): Remotion source
+- [docs/deck/](docs/deck/): pitch deck (HTML source and PDF)
+- [landing/](landing/): marketing website
+- [apprentice-build-kit/](apprentice-build-kit/): the spec written before building
