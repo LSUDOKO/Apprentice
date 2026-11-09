@@ -1,5 +1,7 @@
 # Apprentice — Launch Film Script & Shot List
 
+> **Published:** https://clips.agent-native.com/share/77mChMteEQ6M
+>
 > Final cut: **3:00** (180.75 s) · 1920×1080 (master 2560×1440 for zooms) · 60 fps · H.264 · −14 LUFS
 > Event: Builder.io **Agent-Native Hackathon** — deadline **Mon Nov 9 2026, 11:59 PM PT**
 > Delivery: upload the final MP4 to **clips.agent-native.com** (Clips accepts video uploads), set it **Public**, paste the link in the submission form.

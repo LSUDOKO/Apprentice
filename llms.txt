@@ -4,6 +4,7 @@
 
 Live app: https://apprentice-agent.onrender.com (demo login judge@apprentice-demo.dev / apprentice-demo-2026)
 Website: https://apprentice-agent.pages.dev
+Demo film (3 min, public, agent-readable transcript): https://clips.agent-native.com/share/77mChMteEQ6M
 Stack: Agent-Native 0.226 (React Router + Nitro), TypeScript strict, Drizzle, Postgres (Neon) / PGlite, Vitest.
 
 ## Start here

@@ -5,6 +5,7 @@
 <p align="center">
   <a href="https://apprentice-agent.onrender.com"><img alt="Live app" src="https://img.shields.io/badge/live%20app-onrender.com-DDF26B?style=for-the-badge&labelColor=0B0D08" /></a>
   <a href="https://apprentice-agent.pages.dev"><img alt="Website" src="https://img.shields.io/badge/website-pages.dev-DDF26B?style=for-the-badge&labelColor=0B0D08" /></a>
+  <a href="https://clips.agent-native.com/share/77mChMteEQ6M"><img alt="Demo film" src="https://img.shields.io/badge/demo%20film-3%20min%20on%20Clips-DDF26B?style=for-the-badge&labelColor=0B0D08" /></a>
   <a href="docs/deck/Apprentice-deck.pdf"><img alt="Pitch deck" src="https://img.shields.io/badge/deck-PDF-ECEEDF?style=for-the-badge&labelColor=0B0D08" /></a>
 </p>
 <p align="center">
@@ -20,9 +21,11 @@
 
 Built for the [Builder.io Agent-Native Hackathon](https://www.builder.io/hackathon) (November 2026) by Arpit Singh.
 
+▶ **[Watch the 3-minute demo film on Clips](https://clips.agent-native.com/share/77mChMteEQ6M)**: the real app, real BuilderIO/agent-native issues, start to finish.
+
 <p align="center">
   <img src="docs/demo-live.gif" alt="Real screen recording: the queue, the provenance drawer naming the demonstrations a playbook learned from, live backtest numbers changing as trigger conditions are toggled, the tests tab, review, and the Insights dashboard" width="100%" />
-  <br /><sub>Real recording of the running app. Full quality: <a href="docs/demo.mp4">docs/demo.mp4</a>. The 3-minute narrated film is built from <a href="video/">video/</a> (script: <a href="docs/video/VIDEO-SCRIPT.md">docs/video/VIDEO-SCRIPT.md</a>).</sub>
+  <br /><sub>Real recording of the running app. Full quality: <a href="docs/demo.mp4">docs/demo.mp4</a>. The <a href="https://clips.agent-native.com/share/77mChMteEQ6M">3-minute narrated film</a> is built from <a href="video/">video/</a> (script: <a href="docs/video/VIDEO-SCRIPT.md">docs/video/VIDEO-SCRIPT.md</a>).</sub>
 </p>
 
 ## At a glance
@@ -45,6 +48,7 @@ Full list with line numbers: **[docs/AGENT-NATIVE-EVIDENCE.md](docs/AGENT-NATIVE
 | **Live app** | https://apprentice-agent.onrender.com (Render free tier: the first visit can take about a minute to wake up) |
 | **Demo account** | `judge@apprentice-demo.dev` / `apprentice-demo-2026` (demo data and 30 real agent-native issues already loaded). Or create your own account and press **Load demo data**. |
 | **Website** | https://apprentice-agent.pages.dev |
+| **Demo film** | https://clips.agent-native.com/share/77mChMteEQ6M (3 min) |
 | **Pitch deck** | [docs/deck/Apprentice-deck.pdf](docs/deck/Apprentice-deck.pdf) |
 
 Then:
