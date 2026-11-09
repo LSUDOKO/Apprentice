@@ -308,7 +308,7 @@
       "body": "My scheduled job seems to run twice every hour.\nI only created it once.",
       "author": "hikaru",
       "authorIsFirstTime": false,
-      "createdHoursAgo": 40,
+      "createdHoursAgo": 1,
       "batch": "live"
     },
     {
@@ -318,7 +318,7 @@
       "body": "Adding the app as a connector in my chat app fails with a generic error.\nI followed the docs.",
       "author": "oskar-t",
       "authorIsFirstTime": false,
-      "createdHoursAgo": 39,
+      "createdHoursAgo": 2.5,
       "batch": "live"
     },
     {
@@ -328,7 +328,7 @@
       "body": "Code in comments renders as one long line and lists are broken.\nUsed to look fine.",
       "author": "ngozi-a",
       "authorIsFirstTime": true,
-      "createdHoursAgo": 38,
+      "createdHoursAgo": 4,
       "batch": "live"
     },
     {
@@ -338,7 +338,7 @@
       "body": "The agent sidebar spinner never ends. I can't type anything.\nHappens every time I open the app.",
       "author": "wren",
       "authorIsFirstTime": false,
-      "createdHoursAgo": 37,
+      "createdHoursAgo": 5.5,
       "batch": "live"
     },
     {
@@ -348,7 +348,7 @@
       "body": "On my phone the layout overflows and buttons are cut off.\nDesktop is fine.",
       "author": "tobi-io",
       "authorIsFirstTime": false,
-      "createdHoursAgo": 36,
+      "createdHoursAgo": 7,
       "batch": "live"
     },
     {
@@ -358,7 +358,7 @@
       "body": "Clicking the mic in the composer does nothing.\nI allowed microphone access.",
       "author": "jules-p",
       "authorIsFirstTime": false,
-      "createdHoursAgo": 35,
+      "createdHoursAgo": 8.5,
       "batch": "live"
     },
     {
@@ -368,7 +368,7 @@
       "body": "The copy button on code blocks copies the wrong snippet.\nIt grabs the one above it.",
       "author": "sarah-codes",
       "authorIsFirstTime": false,
-      "createdHoursAgo": 34,
+      "createdHoursAgo": 10,
       "batch": "live"
     },
     {
@@ -378,7 +378,7 @@
       "body": "Not sure if this is a bug or my setup — the sidebar shows an error with this config:\n\n```ts\nexport default defineAgentNativeConfig({ harness: true, sidebar: { width: 'wide' } });\n```\n\nIs `sidebar.width` supposed to accept a string?",
       "author": "amir-k",
       "authorIsFirstTime": true,
-      "createdHoursAgo": 33,
+      "createdHoursAgo": 11.5,
       "batch": "live"
     },
     {
@@ -388,7 +388,7 @@
       "body": "Version 0.12.0 of @agent-native/core.\n\nSteps to reproduce:\n1. Add `app/routes/reports.tsx`\n2. Run the template sync\n\nExpected: custom route kept.\nActual: the file is removed.",
       "author": "pjotr",
       "authorIsFirstTime": false,
-      "createdHoursAgo": 32,
+      "createdHoursAgo": 13,
       "batch": "live"
     },
     {
@@ -398,7 +398,7 @@
       "body": "@agent-native/core 0.12.4\n\nSteps to reproduce:\n1. Stop the dev server\n2. Run `pnpm action list-items`\n\nExpected: runs against the local DB or errors.\nActual: hangs forever.",
       "author": "quinnbuilds",
       "authorIsFirstTime": false,
-      "createdHoursAgo": 31,
+      "createdHoursAgo": 14.5,
       "batch": "live"
     },
     {
@@ -408,7 +408,7 @@
       "body": "@agent-native/core 0.12.3, Postgres 16.\n\nSteps to reproduce:\n1. Update a row from an action\n2. Read it back in the same request\n\nExpected: new value.\nActual: old value.",
       "author": "lunaops",
       "authorIsFirstTime": false,
-      "createdHoursAgo": 30,
+      "createdHoursAgo": 16,
       "batch": "live"
     },
     {
@@ -418,7 +418,7 @@
       "body": "@agent-native/core 0.12.2\n\nSteps to reproduce:\n1. Switch to dark mode\n2. Open Settings\n\nExpected: dark surfaces.\nActual: white cards on a dark background.",
       "author": "rosa-m",
       "authorIsFirstTime": false,
-      "createdHoursAgo": 29,
+      "createdHoursAgo": 17.5,
       "batch": "live"
     },
     {
@@ -428,7 +428,7 @@
       "body": "@agent-native/core 0.12.3\n\nThe server process exits when calling any action from chat:\n\n```\nTypeError: Cannot read properties of undefined (reading 'userEmail')\n    at runAction (/app/node_modules/@agent-native/core/dist/action.js:412:23)\n    at async handleToolCall (/app/node_modules/@agent-native/core/dist/agent/loop.js:88:11)\n```",
       "author": "devin-r",
       "authorIsFirstTime": false,
-      "createdHoursAgo": 28,
+      "createdHoursAgo": 19,
       "batch": "live"
     },
     {
@@ -438,7 +438,7 @@
       "body": "@agent-native/core 0.12.4 on Node 22.\n\n```\nError: Migration lock not acquired after 30000ms\n    at acquireLock (/app/node_modules/@agent-native/core/dist/db/migrate.js:57:15)\n    at async runMigrations (/app/node_modules/@agent-native/core/dist/db/migrate.js:102:5)\n```",
       "author": "felixdev",
       "authorIsFirstTime": false,
-      "createdHoursAgo": 27,
+      "createdHoursAgo": 20.5,
       "batch": "live"
     },
     {
@@ -448,7 +448,7 @@
       "body": "@agent-native/core 0.12.3\n\n```\nRangeError: Invalid time value\n    at Date.toISOString (<anonymous>)\n    at serializeResult (/app/node_modules/@agent-native/core/dist/agent/serialize.js:31:20)\n```",
       "author": "mkato",
       "authorIsFirstTime": false,
-      "createdHoursAgo": 26,
+      "createdHoursAgo": 22,
       "batch": "live"
     },
     {
@@ -458,7 +458,7 @@
       "body": "@agent-native/core 0.12.2\n\n```\nReferenceError: window is not defined\n    at useRecorder (/app/node_modules/@agent-native/core/dist/client/recorder.js:14:9)\n    at renderToPipeableStream (/app/node_modules/react-dom/server.js:120:3)\n```",
       "author": "hikaru",
       "authorIsFirstTime": false,
-      "createdHoursAgo": 25,
+      "createdHoursAgo": 23.5,
       "batch": "live"
     },
     {
@@ -468,7 +468,7 @@
       "body": "Same as database error when saving a record? Running @agent-native/core 0.12.3.\n\nSaving a record fails with a database error toast.\nIt worked on another machine. Really confusing.",
       "author": "oskar-t",
       "authorIsFirstTime": false,
-      "createdHoursAgo": 24,
+      "createdHoursAgo": 25,
       "batch": "live"
     },
     {
@@ -478,7 +478,7 @@
       "body": "Same as database error when saving a record? Running @agent-native/core 0.12.3.\n\nSaving a record fails with a database error toast.\nIt worked on another machine. Really confusing.",
       "author": "ngozi-a",
       "authorIsFirstTime": false,
-      "createdHoursAgo": 23,
+      "createdHoursAgo": 26.5,
       "batch": "live"
     },
     {
@@ -488,7 +488,7 @@
       "body": "Same as navigation breaks after opening settings? Running @agent-native/core 0.12.3.\n\nIf I open settings and go back, the app navigation stops working.\nLinks change the URL but the page doesn't update.",
       "author": "wren",
       "authorIsFirstTime": false,
-      "createdHoursAgo": 22,
+      "createdHoursAgo": 28,
       "batch": "live"
     },
     {
@@ -498,7 +498,7 @@
       "body": "Same as navigation breaks after opening settings? Running @agent-native/core 0.12.3.\n\nIf I open settings and go back, the app navigation stops working.\nLinks change the URL but the page doesn't update.",
       "author": "tobi-io",
       "authorIsFirstTime": false,
-      "createdHoursAgo": 21,
+      "createdHoursAgo": 29.5,
       "batch": "live"
     },
     {
@@ -508,7 +508,7 @@
       "body": "The docs don't explain where jobs are stored or how to run one now.",
       "author": "jules-p",
       "authorIsFirstTime": false,
-      "createdHoursAgo": 20,
+      "createdHoursAgo": 31,
       "batch": "live"
     },
     {
@@ -518,7 +518,7 @@
       "body": "\"permisions\" should be \"permissions\" in the sharing documentation.",
       "author": "sarah-codes",
       "authorIsFirstTime": false,
-      "createdHoursAgo": 19,
+      "createdHoursAgo": 32.5,
       "batch": "live"
     },
     {
@@ -528,7 +528,7 @@
       "body": "The client data documentation mentions realtime but has no example.",
       "author": "amir-k",
       "authorIsFirstTime": false,
-      "createdHoursAgo": 18,
+      "createdHoursAgo": 34,
       "batch": "live"
     },
     {
@@ -538,7 +538,7 @@
       "body": "The tutorial screenshot shows the old sidebar.",
       "author": "pjotr",
       "authorIsFirstTime": false,
-      "createdHoursAgo": 17,
+      "createdHoursAgo": 35.5,
       "batch": "live"
     },
     {
@@ -548,7 +548,7 @@
       "body": "Get a discount loan today https://example.invalid/1 https://example.invalid/2 https://example.invalid/3",
       "author": "quinnbuilds",
       "authorIsFirstTime": true,
-      "createdHoursAgo": 16,
+      "createdHoursAgo": 37,
       "batch": "live"
     },
     {
@@ -558,7 +558,7 @@
       "body": "Casino bonus, click here: https://example.invalid/c1 https://example.invalid/c2 https://example.invalid/c3",
       "author": "lunaops",
       "authorIsFirstTime": true,
-      "createdHoursAgo": 15,
+      "createdHoursAgo": 38.5,
       "batch": "live"
     },
     {
@@ -568,7 +568,7 @@
       "body": "Please add a way to select many rows and run one action on all of them.",
       "author": "rosa-m",
       "authorIsFirstTime": false,
-      "createdHoursAgo": 14,
+      "createdHoursAgo": 40,
       "batch": "live"
     },
     {
@@ -578,7 +578,7 @@
       "body": "Would be nice to rebind keyboard shortcuts from settings.",
       "author": "devin-r",
       "authorIsFirstTime": false,
-      "createdHoursAgo": 13,
+      "createdHoursAgo": 41.5,
       "batch": "live"
     },
     {
@@ -588,7 +588,7 @@
       "body": "Could we post digests as threads instead of new messages?",
       "author": "felixdev",
       "authorIsFirstTime": false,
-      "createdHoursAgo": 12,
+      "createdHoursAgo": 43,
       "batch": "live"
     },
     {
@@ -598,7 +598,7 @@
       "body": "Feature request: show both themes in the screenshots.",
       "author": "mkato",
       "authorIsFirstTime": false,
-      "createdHoursAgo": 11,
+      "createdHoursAgo": 44.5,
       "batch": "live"
     },
     {

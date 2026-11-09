@@ -128,7 +128,7 @@ function add(batch: SeedIssue["batch"], title: string, body: string, createdHour
 }
 
 const hist = (i: number) => 24 * 28 - i * 20; // spread over the past ~4 weeks
-const live = (i: number) => 40 - i; // within the last 2 days
+const live = (i: number) => 1 + i * 1.5; // within the last 2 days; #31 (the demo issue) is the newest
 
 // 001–018: unversioned bugs (history)
 for (let i = 0; i < 18; i++) add("history", UNVERSIONED_BUGS[i]![0], UNVERSIONED_BUGS[i]![1], hist(i), i % 5 === 0);

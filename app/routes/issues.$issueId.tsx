@@ -166,7 +166,7 @@ export default function IssueDetail() {
             </section>
           </article>
 
-          <aside className="space-y-4 text-[13px]" aria-label="Triage">
+          <aside data-triage className="space-y-4 text-[13px]" aria-label="Triage">
             <div>
               <p className="mb-1.5 text-xs font-medium text-muted-foreground">
                 Labels <kbd className="font-mono text-[10px]">l</kbd>
@@ -262,7 +262,7 @@ export default function IssueDetail() {
         </div>
       </div>
 
-      <footer className="flex flex-wrap items-center gap-2 border-t border-border bg-background px-4 py-2.5" aria-label="Actions">
+      <footer data-triage className="flex flex-wrap items-center gap-2 border-t border-border bg-background px-4 py-2.5" aria-label="Actions">
         {open ? <GhostChip issueId={issueId} /> : null}
         <div className="ms-auto flex flex-wrap gap-2">
           {open ? (

@@ -29,7 +29,7 @@ Spec: `apprentice-build-kit/` (docs 00–13). Framework: `@agent-native/core` **
 |---|---|---|
 | 1 | Queue with demo data + "Demo data" badge | ✅ |
 | 2–3 | Triage #31, #32 by hand → pattern card | ✅ the card appears immediately after the second demonstration (with Bob's conflict) |
-| 4 | Ghost chip on #33 after `needs-info`, Tab runs it | ✅ in the integration test (prediction from the candidate); chip renders in the action bar |
+| 4 | Ghost chip on #33 after `needs-info`, Tab runs it | ✅ in the browser after Reset demo: Tab ×3 applied `+bug`, request repro, assign `triage` (each recorded as a demonstration) |
 | 5 | Make playbook → editor, 3 steps, owners, SKILL.md | ✅ |
 | 6 | Backtest numbers, toggle changes them | ✅ 29 considered · 17 matched · 14 agreed → toggling `kind` gives 25/14 |
 | 7 | Agent "let me tune this" → inline sliders | ⏳ needs an LLM key (skill + `appAction` recipe in `apprentice-teacher`) |
@@ -40,10 +40,10 @@ Spec: `apprentice-build-kit/` (docs 00–13). Framework: `@agent-native/core` **
 | 12 | Override at Act → auto-demotion banner | ✅ in the engine (`checkDrift`) and wired in `review-decision`; banner in the chrome |
 | 13 | Undo the run → restored | ✅ in UI and integration test (comments retracted, conflicts refused) |
 | 14 | "Who taught you this?" | ✅ shows the #31 and #32 demonstrations |
-| 15 | Insights hours saved > 0; autopilot → digest in-app | ✅ via *Run autopilot now* / *Build digest now*; the scheduled job is installed through `install-autopilot` |
+| 15 | Insights hours saved > 0; autopilot → digest in-app | ✅ via *Run autopilot now* / *Build digest now*; *Install hourly autopilot* wrote the job (`resourcePut`); a scheduled tick was not observed locally |
 | 16 | Export skill zip | ✅ zip with `SKILL.md` + `playbook.json` downloaded and verified with `unzip` (dependency-free writer in `app/lib/zip.ts`) |
 | 17 | MCP inline review card | ⏳ needs a connected host; deep link always works |
-| 18 | Team-mode conflict card + resolve | ✅ card shows both approaches; "Make playbook (my way)" records the team decision in the description. "Use bob's way" (`resolve-conflict`) was not clicked in this session |
+| 18 | Team-mode conflict card + resolve | ✅ card shows both approaches; "Use bob's way" (`resolve-conflict`) creates "Close for unversioned bugs" from Bob's demonstrations and records the team decision |
 
 Also verified in the browser: **lesson recording** (Record → triage #67 → narration → Stop: lesson saved with 6 Recorder events, the narration and the captured demonstration).
 
@@ -85,7 +85,11 @@ Agent chat replies, the Draft-level agent Approve/Deny pause, the generative-UI 
 10. **GitHub import** is unauthenticated: the doctor forbids reading per-user credentials from `process.env`.
 11. **Apprentice settings** live at `/preferences`, because `/settings` belongs to the framework.
 
+Reset demo was run three times in the browser; each restored 60 issues + 30 history episodes, with #31–#38 at the top of Untriaged.
+
 ## Known issues
+
+- Once during testing the Review page navigated to /lessons on its own; it did not happen again in later runs and the cause is unknown.
 
 - On a cold dev start, each new route compiles on first visit (the framework skeleton shows for a few seconds).
 - `NODE_OPTIONS=--no-experimental-strip-types` in a shell breaks `agent-native dev`. Unset it for this project.

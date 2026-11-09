@@ -2,7 +2,7 @@ import { sendToAgentChat } from "@agent-native/core/client/agent-chat";
 import { actionErrorMessage, callAction, useActionMutation, useActionQuery } from "@agent-native/core/client/hooks";
 import { IconSparkles } from "@tabler/icons-react";
 import { useQueryClient } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 
 import { cn } from "@/lib/utils";
@@ -34,6 +34,7 @@ export function GhostChip({ issueId, onAccepted }: { issueId: string; onAccepted
   const key = s ? `${s.sourceId}:${s.stepIndex}:${s.label}` : null;
   const outcome = useActionMutation("record-suggestion-outcome", { skipActionQueryInvalidation: true });
   const qc = useQueryClient();
+  const chipRef = useRef<HTMLButtonElement>(null);
 
   async function accept() {
     if (!s) return;
@@ -62,7 +63,10 @@ export function GhostChip({ issueId, onAccepted }: { issueId: string; onAccepted
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (!s || hidden === key || isTypingTarget(e.target) || e.metaKey || e.ctrlKey || e.altKey) return;
-      if (e.key === "Tab" && !e.shiftKey) {
+      const focus = document.activeElement;
+      // Tab accepts only when focus isn't in normal tab order elsewhere: page body, the chip, or the triage controls.
+      const onPage = !focus || focus === document.body || focus === chipRef.current || !!focus.closest("[data-triage]");
+      if (e.key === "Tab" && !e.shiftKey && onPage) {
         e.preventDefault();
         void accept();
       } else if (e.key === "Escape") {
@@ -77,6 +81,7 @@ export function GhostChip({ issueId, onAccepted }: { issueId: string; onAccepted
   if (!s || hidden === key) return null;
   return (
     <button
+      ref={chipRef}
       type="button"
       onClick={() => void accept()}
       className={cn(

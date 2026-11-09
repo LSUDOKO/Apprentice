@@ -4,6 +4,7 @@ import { and, asc, desc, eq, inArray, ne, sql } from "drizzle-orm";
 import { DESTRUCTIVE_ACTIONS, isDomainAction } from "../engine/actions.js";
 import { backtest, type BacktestResult } from "../engine/backtest.js";
 import { humanMs, median } from "../engine/metrics.js";
+import { nameFrom } from "../engine/patterns.js";
 import { canonicalSteps, computeSignature } from "../engine/signature.js";
 import { skillMarkdown } from "../engine/skill-markdown.js";
 import { runTest } from "../engine/tests.js";
@@ -376,7 +377,7 @@ export async function createFromCandidate(
     ? ` Team decision: chose ${other ? other.actorEmail : candidate.actorEmail}'s approach over ${[candidate.actorEmail, ...candidate.conflictWith.map((c) => c.actorEmail)].filter((a) => a !== (other?.actorEmail ?? candidate.actorEmail)).join(", ")}${opts.note ? ` (${opts.note})` : ""}.`
     : "";
   const pb = await createPlaybook(scope, {
-    name: opts.name ?? candidate.suggestedName,
+    name: opts.name ?? (other ? nameFrom(candidate.trigger, other.steps) : candidate.suggestedName),
     description: (opts.description ?? `Learned from ${candidate.support} demonstrations.`) + teamNote,
     trigger: candidate.trigger,
     steps,
