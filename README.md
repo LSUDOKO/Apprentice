@@ -74,7 +74,7 @@ For the agent (chat, voice, Draft-level approvals, the generative-UI tuner, eval
 
 ```bash
 pnpm typecheck               # TypeScript strict
-pnpm test                    # 53 engine + integration tests (in-memory PGlite)
+pnpm test                    # 55 engine + integration tests (in-memory PGlite)
 pnpm agent-native:doctor     # framework guards
 pnpm eval                    # agent behavior gate (needs an LLM key)
 pnpm seed:generate           # regenerate the deterministic demo dataset

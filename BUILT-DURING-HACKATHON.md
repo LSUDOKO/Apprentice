@@ -13,7 +13,6 @@
 | Package | Why |
 |---|---|
 | `@fontsource/ibm-plex-sans`, `@fontsource/ibm-plex-mono` | Self-hosted fonts for the "Workshop Ledger" design |
-| `jszip` | Client-side zip for *Export skill* |
 
 ## Built new
 
@@ -23,7 +22,7 @@
 - **Database:** 15 tables (`server/db/schema.ts`) with additive migrations.
 - **UI:** Workshop Ledger theme; nav rail with badges; watch indicator; Queue and Issue detail (label/priority/component/assignee editors, repro/duplicate/close dialogs, activity timeline with "Why?"); pattern card with Team-mode conflict; ghost chip; playbook editor (Recipe, Backtest with live toggles, Tests, Provenance, History, SKILL.md); Review split view with keyboard verdicts and correction sheet; Exceptions; Insights; Lessons with narration mic; Compare; Settings; `?` shortcuts overlay.
 - **Agent:** `AGENTS.md` Apprentice section, system prompt, primary tool list, four skills (`triage-domain`, `apprentice-teacher`, `playbook-runner`, `shadow-reviewer`), autopilot job template, `evals/apprentice.eval.ts`.
-- **Tests:** 53 Vitest tests (engine units + full-loop integration on PGlite).
+- **Tests:** 55 Vitest tests (engine units + full-loop integration on PGlite).
 - **Seed data generator** (`scripts/generate-seed.ts`) and committed JSON: 68 invented issues plus demonstration history.
 
 ## Changed in the template
