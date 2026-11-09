@@ -180,7 +180,7 @@ export function RowsSkeleton({ rows = 6, className }: { rows?: number; className
   );
 }
 
-export function Stat({ label, value, hint, tone }: { label: string; value: ReactNode; hint?: string; tone?: "ok" | "bad" | "warn" }) {
+export function Stat({ label, value, hint, tone }: { label: string; value: ReactNode; hint?: string | undefined; tone?: "ok" | "bad" | "warn" | undefined }) {
   return (
     <div className="rounded-[10px] border border-border bg-card p-3" title={hint}>
       <p className="text-xs text-muted-foreground">{label}</p>
