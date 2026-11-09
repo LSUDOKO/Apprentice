@@ -1,0 +1,17 @@
+diff --git a/dist/agent/model-config.js b/dist/agent/model-config.js
+index 0e059299208e752d8a8409539a471ae834fb6f04..6ff91cd53e983f0d31dba110731b228ae4849b3c 100644
+--- a/dist/agent/model-config.js
++++ b/dist/agent/model-config.js
+@@ -364,8 +364,11 @@ export const AGENT_MODEL_CONFIG = {
+             ],
+         },
+         groq: {
+-            defaultModel: "llama-3.3-70b-versatile",
++            defaultModel: "openai/gpt-oss-120b",
+             supportedModels: [
++                "openai/gpt-oss-120b",
++                "openai/gpt-oss-20b",
++                "qwen/qwen3.8-27b",
+                 "llama-3.3-70b-versatile",
+                 "llama3-8b-8192",
+                 "llama-3.1-8b-instant",
