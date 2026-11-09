@@ -4,7 +4,8 @@ import { evaluate } from "./triggers.js";
 import type { Condition, EpisodeLike, FeatureField, IssueFeatures, ItemView, StepSpec, TriggerSpec } from "./types.js";
 
 const BOOLEAN_FIELDS: FeatureField[] = ["hasVersion", "hasRepro", "hasStackTrace", "hasCodeBlock", "mentionsDocs", "isLikelySpam", "authorIsFirstTime"];
-const NULLABLE_FIELDS: FeatureField[] = ["versionMentioned", "mentionsComponent", "priority", "component", "assignee"];
+// versionMentioned is covered by hasVersion; mentionsComponent is keyword noise that discriminates by coincidence.
+const NULLABLE_FIELDS: FeatureField[] = ["priority", "component", "assignee"];
 const CATEGORICAL_FIELDS: FeatureField[] = ["kind"];
 
 const MAX_CONDITIONS = 4;

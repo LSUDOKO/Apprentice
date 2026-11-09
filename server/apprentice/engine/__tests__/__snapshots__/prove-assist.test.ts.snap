@@ -1,0 +1,35 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SKILL.md > renders the standard structure deterministically 1`] = `
+"---
+name: needs-info-for-unversioned-bugs
+description: Use when kind is \`bug\`, no version is mentioned. Asks for the missing version. Learned by Apprentice from 1 demonstration. Agreed with the user 31/34 times in backtest.
+---
+
+# Needs-info for unversioned bugs
+
+## When to use
+All of these are true for the issue:
+- kind is \`bug\`
+- no version is mentioned
+
+## Steps
+1. **label-issue** — add \`bug\`, \`needs-info\` *(fixed)*
+2. **request-repro** — message: *(you decide)* Write a comment similar to these examples: “Thanks @a, which version?” / “Thanks @b, which version?”; missing \`version\`, \`steps\` *(fixed)*
+3. **assign-issue** — assignee \`triage\` *(fixed)*
+
+## Checkpoints
+- None. Ask before closing or marking anything as duplicate.
+
+## If you are running inside Apprentice
+Call \`run-playbook\` with playbook id \`pb_1\` instead of doing the steps by hand.
+
+## If you are running somewhere else
+If the Apprentice MCP server is connected, call its \`run-playbook\` tool. Otherwise perform the
+equivalent steps in your issue tracker, and ask the user before any destructive action.
+
+## Learned from
+- 1 demonstration by alice@example.com (issues #31) on 2026-11-09
+- Backtest: matched 34, agreed 31 · Tests: 12/12 passing · Trust level: Act
+"
+`;

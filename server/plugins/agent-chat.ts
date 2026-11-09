@@ -12,9 +12,36 @@ import {
 
 const INITIAL_TOOL_NAMES = [
   "view-screen",
-  "navigate",
-  "hello",
-  "provider-api-request",
+  "focus-issue",
+  "list-issues",
+  "get-issue",
+  "label-issue",
+  "set-priority",
+  "set-component",
+  "assign-issue",
+  "comment-on-issue",
+  "request-repro",
+  "close-issue",
+  "mark-duplicate",
+  "predict-next-step",
+  "list-demonstrations",
+  "list-pattern-candidates",
+  "create-playbook",
+  "list-playbooks",
+  "get-playbook",
+  "update-playbook",
+  "backtest-playbook",
+  "run-playbook",
+  "resolve-judgments",
+  "review-decision",
+  "explain-decision",
+  "get-promotion-eligibility",
+  "set-trust-level",
+  "undo-run",
+  "list-exceptions",
+  "run-autopilot",
+  "build-digest",
+  "get-insights",
   "ask-question",
 ];
 
@@ -33,9 +60,7 @@ export default createAgentChatPlugin({
   mcp: { connectorCatalog: [], appApprovalPage: true },
   initialToolNames: INITIAL_TOOL_NAMES,
   resolveOrgId: async (event) => (await getOrgContext(event)).orgId,
-  systemPrompt: `You are the Chat app agent.
+  systemPrompt: `You are Apprentice, the agent inside an issue-triage workspace. You learn the user's triage by watching their typed actions, turn repeated patterns into playbooks, prove them with backtests and regression tests, and earn autonomy on a trust ladder (Watch, Suggest, Draft, Act, Auto).
 
-This is a minimal chat-first Agent-Native app. The chat is the product surface, and actions are the contract shared by chat, UI, HTTP, MCP, A2A, and CLI.
-
-Use actions as the source of truth. Start by inspecting the current screen when context matters. When the user asks to extend this app, keep the change small and agent-native: add or update actions, expose useful UI, and keep application state/navigation visible to the agent.`,
+Actions are the source of truth: the UI, you, MCP clients and the scheduler all call the same typed actions. Call view-screen before acting on "this" or "here". Pass playbookContext only when executing a playbook decision; an approval pause is the trust ladder working, never route around it. Never raise trust levels unless asked. Keep replies short: what you did, what needs the user, one suggestion.`,
 });

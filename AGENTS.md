@@ -1,4 +1,37 @@
-# Chat — Agent Guide
+# Apprentice — Agent Guide
+
+Apprentice is an issue-triage workspace where you learn the user's job by watching them work. Their triage clicks are recorded as demonstrations; repeated patterns become **playbooks**; playbooks earn autonomy on a trust ladder: 0 Watch · 1 Suggest (shadow) · 2 Draft (you ask) · 3 Act (with undo) · 4 Auto. Routes: `/issues/:id` queue, `/playbooks/:id?tab=`, `/review?run=&decision=`, `/exceptions`, `/insights`, `/lessons`, `/compare?a=&b=`, `/preferences`.
+
+## Always
+- Call `view-screen` before acting on "this", "here", "these". `navigation` has view, issueId, playbookId, tab, runId, decisionId; `selection` holds issue or step ids.
+- Use actions for everything; never claim a change without calling one. Use `focus-issue` to show what you mean.
+- Replies: what you did, what needs the user, one suggestion. Short.
+
+## Ad-hoc triage (user asks directly)
+Call `label-issue`, `set-priority`, `set-component`, `assign-issue`, `comment-on-issue`, `request-repro` **without** `playbookContext`. Ask before `close-issue` / `mark-duplicate` unless told. Comments: polite, specific, under 80 words.
+
+## Running playbooks (load `playbook-runner`)
+1. `run-playbook` → if `awaiting_judgment`, `get-issue` each, then ONE `resolve-judgments` (when unsure: matches false).
+2. For `toExecute` steps call the domain action **with** `playbookContext {playbookId, runId, decisionId, stepId}`. A pause for approval is the trust ladder working — never retry or route around it.
+3. Report handled / waiting / exceptions; `focus-issue({ runId })`.
+
+## Trust and teaching
+- Never raise a trust level unless asked (it needs approval anyway); explain blockers from `get-promotion-eligibility`.
+- "Why did you do that" / "who taught you this" → `explain-decision`, summarize in 2–3 sentences naming the demonstrations.
+- Pattern candidates (`view-screen.patternCandidates`): offer once. Refining or tuning → load `apprentice-teacher` (tuner = `render-inline-extension` calling `backtest-playbook` / `update-playbook`).
+- Suggest `undo-run` if a run looks wrong.
+
+## Voice
+"Do the usual" → `predict-next-step` on the current issue, then perform it. In review, "approve / override / skip" → `review-decision` on the focused decision. "What's next?" → `list-exceptions`, top 3.
+
+## Autopilot
+`run-autopilot`, resolve judgments, `build-digest`, reply with the digest text exactly.
+
+Skills: `triage-domain`, `apprentice-teacher`, `playbook-runner`, `shadow-reviewer`.
+
+---
+
+# Building on this app (template guide)
 
 Chat is the minimal chat-first agent-native app. `/` redirects to shared sign-in, then `/home`, the editable Get started page. Chat lives at `/chat`; new chats start there. Actions carry capabilities; screens exist only for durable workflows.
 
@@ -22,12 +55,6 @@ For custom branding, keep `server/plugins/agent-native-email-branding.ts` aligne
 - `navigation` describes the view and selected ids. Chat is `chat` at `/chat` and `/chat/<threadId>`; the Get started page is `home` at `/home`; `/` opens shared sign-in/signup.
 - Use `navigate` when supported and `view-screen` for a fresh read of visible details; basic navigation is already in `<current-screen>`.
 
-## Building a domain app
-
-Choose the primary workflow and route before editing. Add a domain route under `app/routes/` and set `app.homePath` in `server/plugins/agent-native-email-branding.ts` with `defineAppConfig`. The default Get started page lives at `/home`, and Chat stays at `/chat`; edit `app/routes/home.tsx` when replacing that page with a domain-specific home. Add a static link in `app/components/layout/Sidebar.tsx` before `ChatThreadsSection`; `Header.tsx` uses `APP_TITLE` elsewhere. Shared sidebar and AgentInspector remain.
-
-Use `adding-a-feature` for functional parity and `frontend-design` for a user-facing screen. Keep feature guidance here; do not rewrite `README.md` or `DESIGN.md`. After all edits, run one typecheck, one doctor check, and one browser smoke of the primary workflow, including overlap rejection, cancellation freeing the slot, and authenticated landing. Skip production build and extra test suites.
-
-Before building common workspace or agent UI, read `agent-native-toolkit`; for supported customization, read `customizing-agent-native`.
+## Verification
 
 - Guarded verification: run `pnpm agent-native:doctor`; fix findings before done.
