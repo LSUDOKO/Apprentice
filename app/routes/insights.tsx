@@ -2,7 +2,8 @@ import { useActionMutation, useActionQuery, actionErrorMessage } from "@agent-na
 import { Link } from "react-router";
 import { toast } from "sonner";
 
-import { ErrorState, LEVEL_NAMES, pct, RowsSkeleton, Stat, timeAgo } from "@/components/apprentice/primitives";
+import { AreaChart, BarList, Donut, LineChart, Ring, Staircase } from "@/components/apprentice/Charts";
+import { ErrorState, LEVEL_NAMES, pct, RowsSkeleton, timeAgo } from "@/components/apprentice/primitives";
 import { Markdown } from "@/components/apprentice/Steps";
 import { Button } from "@/components/ui/button";
 
@@ -17,47 +18,84 @@ export default function Insights() {
   if (isPending) return <RowsSkeleton className="p-6" rows={6} />;
   if (error || !data) return <div className="p-6"><ErrorState error={error} onRetry={() => void refetch()} /></div>;
   const t = data.totals;
-  const maxWeek = Math.max(1, ...data.weekly.map((w) => w.minutesSaved));
+  const mix = data.decisionMix;
+  const reasons = Object.entries(data.exceptionsByReason).map(([k, v]) => ({ label: k.toLowerCase().replace(/_/g, " "), value: v }));
+  const kpis = [
+    { label: "Estimated time saved", value: t.minutesSaved >= 60 ? `${t.hoursSaved}h` : `${t.minutesSaved}m`, hint: data.method, ring: null },
+    { label: "Handled by Apprentice", value: String(t.itemsHandled), hint: "Decisions executed in the last 30 days", ring: null },
+    { label: "Agreement with you", value: t.agreement === null ? "—" : pct(t.agreement), hint: `${t.reviewed} reviewed decisions`, ring: t.agreement },
+    { label: "Ghost suggestions taken", value: t.suggestionsShown ? `${t.suggestionsAccepted}/${t.suggestionsShown}` : "—", hint: "Tab-accepted next steps", ring: t.suggestionsShown ? t.suggestionsAccepted / t.suggestionsShown : null },
+  ];
   return (
     <div className="mx-auto max-w-6xl space-y-6 p-6">
-      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
-        <Stat label="Estimated time saved" value={t.minutesSaved >= 60 ? `${t.hoursSaved}h` : `${t.minutesSaved}m`} hint={data.method} />
-        <Stat label="Items handled by Apprentice" value={t.itemsHandled} />
-        <Stat label="Agreement (30d)" value={t.agreement === null ? "—" : pct(t.agreement)} hint={`${t.reviewed} reviewed decisions`} />
-        <Stat label="Suggestions accepted" value={t.suggestionsShown ? `${t.suggestionsAccepted}/${t.suggestionsShown}` : "—"} />
-      </div>
-      <p className="text-xs text-muted-foreground" title={data.method}>* {data.method}</p>
+      <header className="flex flex-wrap items-end justify-between gap-3">
+        <div>
+          <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">Last 30 days</p>
+          <h1 className="text-2xl font-semibold tracking-tight">What your apprentice did</h1>
+        </div>
+        <div className="flex gap-2">
+          <Button size="sm" variant="outline" onClick={() => autopilot.mutate({ maxItems: 50 })} disabled={autopilot.isPending}>Run autopilot now</Button>
+          <Button size="sm" onClick={() => build.mutate({})} disabled={build.isPending}>Build digest now</Button>
+        </div>
+      </header>
 
-      <div className="grid gap-6 lg:grid-cols-2">
-        <section className="rounded-[10px] border border-border bg-card p-4" aria-labelledby="weekly">
-          <h2 id="weekly" className="text-sm font-medium">Minutes saved per week (estimated)</h2>
-          <div className="mt-4 flex items-end gap-3" role="img" aria-label={data.weekly.map((w) => `${w.weekStart}: ${w.minutesSaved} minutes`).join(", ")}>
-            {data.weekly.map((w) => (
-              <div key={w.weekStart} className="flex flex-1 flex-col items-center gap-1">
-                <span className="tabular text-[11px] text-muted-foreground">{w.minutesSaved}</span>
-                <div className="flex h-24 w-full items-end">
-                  <div className="w-full rounded-t-sm bg-primary/80" style={{ height: `${(w.minutesSaved / maxWeek) * 100}%`, minHeight: w.minutesSaved ? 3 : 1 }} />
-                </div>
-                <span className="font-mono text-[10px] text-muted-foreground">{w.weekStart.slice(5)}</span>
-              </div>
-            ))}
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+        {kpis.map((k) => (
+          <div key={k.label} className="glass-panel relative overflow-hidden rounded-[14px] border border-border bg-card p-4" title={k.hint}>
+            <p className="text-xs text-muted-foreground">{k.label}</p>
+            <div className="mt-2 flex items-end justify-between gap-2">
+              <p className="tabular text-[32px] font-semibold leading-none tracking-tight">{k.value}</p>
+              {k.ring !== null ? <Ring value={k.ring} /> : null}
+            </div>
+            <p className="mt-2 truncate text-[11px] text-muted-foreground">{k.hint}</p>
           </div>
+        ))}
+      </div>
+
+      <div className="grid gap-6 lg:grid-cols-5">
+        <section className="glass-panel rounded-[14px] border border-border bg-card p-5 lg:col-span-3" aria-labelledby="weekly">
+          <div className="flex items-baseline justify-between">
+            <h2 id="weekly" className="text-sm font-medium">Minutes saved per week</h2>
+            <span className="text-[11px] text-muted-foreground">estimated*</span>
+          </div>
+          <AreaChart className="mt-3" unit="minutes" data={data.weekly.map((w) => ({ label: w.weekStart.slice(5), value: w.minutesSaved }))} />
         </section>
-        <section className="rounded-[10px] border border-border bg-card p-4" aria-labelledby="autonomy">
-          <h2 id="autonomy" className="text-sm font-medium">Autonomy</h2>
-          <ul className="mt-3 space-y-1.5">
-            {data.autonomy.map((a) => (
-              <li key={a.level} className="flex items-center gap-2 text-[13px]">
-                <span className="w-16 text-muted-foreground">{a.name}</span>
-                <div className="h-2 flex-1 overflow-hidden rounded-full bg-muted">
-                  <div className="h-full bg-primary" style={{ width: `${(a.count / Math.max(1, data.perPlaybook.length)) * 100}%` }} />
-                </div>
-                <span className="tabular w-6 text-end">{a.count}</span>
-              </li>
-            ))}
-          </ul>
+        <section className="glass-panel rounded-[14px] border border-border bg-card p-5 lg:col-span-2" aria-labelledby="mix">
+          <h2 id="mix" className="text-sm font-medium">Decisions</h2>
+          <Donut
+            className="mt-4"
+            center={String(mix.approved + mix.corrected + mix.pending)}
+            sub="decisions"
+            segments={[
+              { label: "Approved by you", value: mix.approved, color: "hsl(var(--primary))" },
+              { label: "Corrected (became tests)", value: mix.corrected, color: "var(--bad)" },
+              { label: "Waiting for review", value: mix.pending, color: "hsl(var(--muted-foreground))" },
+            ]}
+          />
         </section>
       </div>
+
+      <div className="grid gap-6 lg:grid-cols-5">
+        <section className="glass-panel rounded-[14px] border border-border bg-card p-5 lg:col-span-3" aria-labelledby="trend">
+          <h2 id="trend" className="text-sm font-medium">Agreement as you review</h2>
+          <p className="text-[11px] text-muted-foreground">Running share of decisions you approved, per playbook. Dashed lines are the promotion gates.</p>
+          <LineChart className="mt-3" series={data.agreementSeries} thresholds={[{ at: 0.8, label: "Draft gate 80%" }, { at: 0.9, label: "Auto gate 90%" }]} />
+        </section>
+        <section className="glass-panel rounded-[14px] border border-border bg-card p-5 lg:col-span-2" aria-labelledby="autonomy">
+          <h2 id="autonomy" className="text-sm font-medium">Trust ladder</h2>
+          <p className="mb-3 text-[11px] text-muted-foreground">Playbooks at each level of autonomy.</p>
+          <Staircase rungs={data.autonomy} />
+        </section>
+      </div>
+
+      <section className="glass-panel rounded-[14px] border border-border bg-card p-5" aria-labelledby="exc">
+        <div className="mb-3 flex items-baseline justify-between">
+          <h2 id="exc" className="text-sm font-medium">Why items still need you</h2>
+          <Link to="/exceptions" className="text-xs text-muted-foreground hover:text-foreground">Open exceptions</Link>
+        </div>
+        <BarList items={reasons} />
+      </section>
+      <p className="text-xs text-muted-foreground" title={data.method}>* {data.method}</p>
 
       <section aria-labelledby="per-pb">
         <h2 id="per-pb" className="mb-2 text-sm font-medium">Per playbook</h2>
@@ -96,10 +134,6 @@ export default function Insights() {
         <div className="flex flex-wrap items-center gap-2">
           <h2 id="digests" className="text-sm font-medium">Digests</h2>
           <span className="text-xs text-muted-foreground">The scheduled autopilot posts one after each run (to Slack when Messaging is set up).</span>
-          <div className="ms-auto flex gap-2">
-            <Button size="sm" variant="outline" onClick={() => autopilot.mutate({ maxItems: 50 })} disabled={autopilot.isPending}>Run autopilot now</Button>
-            <Button size="sm" onClick={() => build.mutate({})} disabled={build.isPending}>Build digest now</Button>
-          </div>
         </div>
         {(digests.data?.digests ?? []).length === 0 ? (
           <p className="text-[13px] text-muted-foreground">No digests yet.</p>

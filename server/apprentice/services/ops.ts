@@ -153,6 +153,12 @@ export async function getInsights(scope: Scope, rangeDays: number) {
     agreementSeries,
     autonomy: LEVEL_NAMES.map((name, level) => ({ level, name, count: playbooks.filter((p) => p.trustLevel === level).length })),
     exceptionsByReason: exceptions.counts,
+    decisionMix: {
+      approved: reviewed.filter((d) => d.verdict === "approved").length,
+      corrected: reviewed.filter((d) => d.verdict !== "approved").length,
+      executed: executed.length,
+      pending: decisions.filter((d) => !d.verdict && d.status !== "executed").length,
+    },
   };
 }
 
