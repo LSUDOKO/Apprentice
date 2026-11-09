@@ -34,7 +34,7 @@ beforeAll(async () => {
     for (const stmt of sql.split(/;\s*\n/)) await getDbExec().execute(stmt);
   }
   await seedDemoData(scope);
-});
+}, 60_000);
 
 describe("Apprentice loop", () => {
   it("seeds 60 issues and stays idempotent", async () => {

@@ -25,7 +25,8 @@ export function getPath(item: ItemView, path: string): unknown {
 
 function trimExample(v: unknown): string {
   const s = typeof v === "string" ? v : JSON.stringify(v);
-  const oneLine = s.replace(/\s+/g, " ").trim();
+  const firstLine = s.split("\n").find((l) => l.trim()) ?? s;
+  const oneLine = firstLine.replace(/\s+/g, " ").trim();
   return oneLine.length > 120 ? `${oneLine.slice(0, 117)}…` : oneLine;
 }
 

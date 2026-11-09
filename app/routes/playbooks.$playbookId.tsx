@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import { zipFiles } from "@/lib/zip";
 
 import type { StepSpec, TriggerSpec } from "../../server/apprentice/engine/types";
 
@@ -48,12 +49,9 @@ export default function PlaybookEditor() {
 
   async function exportSkill() {
     try {
-      const out = await callAction("export-skill", { playbookId });
-      const { default: JSZip } = await import("jszip");
-      const zip = new JSZip();
-      const folder = zip.folder(out.folder) ?? zip;
-      for (const f of out.files) folder.file(f.path, f.content);
-      const blob = await zip.generateAsync({ type: "blob" });
+      const out = await callAction("export-skill", { playbookId }, { method: "GET" });
+      const bytes = zipFiles(out.files.map((f) => ({ path: `${out.folder}/${f.path}`, content: f.content })));
+      const blob = new Blob([bytes.buffer as ArrayBuffer], { type: "application/zip" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
@@ -62,7 +60,7 @@ export default function PlaybookEditor() {
       URL.revokeObjectURL(url);
       toast.success("Skill exported: SKILL.md + playbook.json");
     } catch (e) {
-      toast.error(actionErrorMessage(e) ?? "Export failed.");
+      toast.error(actionErrorMessage(e) ?? (e instanceof Error ? `Export failed: ${e.message}` : "Export failed."));
     }
   }
 
