@@ -1,0 +1,922 @@
+{
+  "episodes": [
+    {
+      "issueId": "seed-001",
+      "actor": "me",
+      "startedHoursAgo": 670,
+      "steps": [
+        {
+          "action": "label-issue",
+          "args": {
+            "add": [
+              "bug",
+              "needs-info"
+            ],
+            "remove": []
+          },
+          "afterSec": 20
+        },
+        {
+          "action": "request-repro",
+          "args": {
+            "missing": [
+              "version",
+              "steps"
+            ],
+            "message": "Thanks for the report, @hikaru! Could you share the `@agent-native/core` version and the exact steps to reproduce from a fresh template?"
+          },
+          "afterSec": 60
+        },
+        {
+          "action": "assign-issue",
+          "args": {
+            "assignee": "triage"
+          },
+          "afterSec": 15
+        }
+      ]
+    },
+    {
+      "issueId": "seed-002",
+      "actor": "me",
+      "startedHoursAgo": 650,
+      "steps": [
+        {
+          "action": "label-issue",
+          "args": {
+            "add": [
+              "bug",
+              "needs-info"
+            ],
+            "remove": []
+          },
+          "afterSec": 35
+        },
+        {
+          "action": "request-repro",
+          "args": {
+            "missing": [
+              "version",
+              "steps"
+            ],
+            "message": "Thanks for the report, @oskar-t! Could you share the `@agent-native/core` version and the exact steps to reproduce from a fresh template?"
+          },
+          "afterSec": 90
+        },
+        {
+          "action": "assign-issue",
+          "args": {
+            "assignee": "triage"
+          },
+          "afterSec": 25
+        }
+      ]
+    },
+    {
+      "issueId": "seed-003",
+      "actor": "me",
+      "startedHoursAgo": 630,
+      "steps": [
+        {
+          "action": "label-issue",
+          "args": {
+            "add": [
+              "bug",
+              "needs-info"
+            ],
+            "remove": []
+          },
+          "afterSec": 50
+        },
+        {
+          "action": "request-repro",
+          "args": {
+            "missing": [
+              "version",
+              "steps"
+            ],
+            "message": "Thanks for the report, @ngozi-a! Could you share the `@agent-native/core` version and the exact steps to reproduce from a fresh template?"
+          },
+          "afterSec": 120
+        },
+        {
+          "action": "assign-issue",
+          "args": {
+            "assignee": "triage"
+          },
+          "afterSec": 35
+        }
+      ]
+    },
+    {
+      "issueId": "seed-004",
+      "actor": "me",
+      "startedHoursAgo": 610,
+      "steps": [
+        {
+          "action": "label-issue",
+          "args": {
+            "add": [
+              "bug",
+              "needs-info"
+            ],
+            "remove": []
+          },
+          "afterSec": 65
+        },
+        {
+          "action": "request-repro",
+          "args": {
+            "missing": [
+              "version",
+              "steps"
+            ],
+            "message": "Thanks for the report, @wren! Could you share the `@agent-native/core` version and the exact steps to reproduce from a fresh template?"
+          },
+          "afterSec": 60
+        },
+        {
+          "action": "assign-issue",
+          "args": {
+            "assignee": "triage"
+          },
+          "afterSec": 45
+        }
+      ]
+    },
+    {
+      "issueId": "seed-005",
+      "actor": "me",
+      "startedHoursAgo": 590,
+      "steps": [
+        {
+          "action": "label-issue",
+          "args": {
+            "add": [
+              "bug",
+              "needs-info"
+            ],
+            "remove": []
+          },
+          "afterSec": 20
+        },
+        {
+          "action": "request-repro",
+          "args": {
+            "missing": [
+              "version",
+              "steps"
+            ],
+            "message": "Thanks for the report, @tobi-io! Could you share the `@agent-native/core` version and the exact steps to reproduce from a fresh template?"
+          },
+          "afterSec": 90
+        },
+        {
+          "action": "assign-issue",
+          "args": {
+            "assignee": "triage"
+          },
+          "afterSec": 55
+        }
+      ]
+    },
+    {
+      "issueId": "seed-006",
+      "actor": "me",
+      "startedHoursAgo": 570,
+      "steps": [
+        {
+          "action": "label-issue",
+          "args": {
+            "add": [
+              "bug",
+              "needs-info"
+            ],
+            "remove": []
+          },
+          "afterSec": 35
+        },
+        {
+          "action": "request-repro",
+          "args": {
+            "missing": [
+              "version",
+              "steps"
+            ],
+            "message": "Thanks for the report, @jules-p! Could you share the `@agent-native/core` version and the exact steps to reproduce from a fresh template?"
+          },
+          "afterSec": 120
+        },
+        {
+          "action": "assign-issue",
+          "args": {
+            "assignee": "triage"
+          },
+          "afterSec": 15
+        }
+      ]
+    },
+    {
+      "issueId": "seed-007",
+      "actor": "me",
+      "startedHoursAgo": 550,
+      "steps": [
+        {
+          "action": "label-issue",
+          "args": {
+            "add": [
+              "bug",
+              "needs-info"
+            ],
+            "remove": []
+          },
+          "afterSec": 50
+        },
+        {
+          "action": "request-repro",
+          "args": {
+            "missing": [
+              "version",
+              "steps"
+            ],
+            "message": "Thanks for the report, @sarah-codes! Could you share the `@agent-native/core` version and the exact steps to reproduce from a fresh template?"
+          },
+          "afterSec": 60
+        },
+        {
+          "action": "assign-issue",
+          "args": {
+            "assignee": "triage"
+          },
+          "afterSec": 25
+        }
+      ]
+    },
+    {
+      "issueId": "seed-008",
+      "actor": "me",
+      "startedHoursAgo": 530,
+      "steps": [
+        {
+          "action": "label-issue",
+          "args": {
+            "add": [
+              "bug",
+              "needs-info"
+            ],
+            "remove": []
+          },
+          "afterSec": 65
+        },
+        {
+          "action": "request-repro",
+          "args": {
+            "missing": [
+              "version",
+              "steps"
+            ],
+            "message": "Thanks for the report, @amir-k! Could you share the `@agent-native/core` version and the exact steps to reproduce from a fresh template?"
+          },
+          "afterSec": 90
+        },
+        {
+          "action": "assign-issue",
+          "args": {
+            "assignee": "triage"
+          },
+          "afterSec": 35
+        }
+      ]
+    },
+    {
+      "issueId": "seed-009",
+      "actor": "me",
+      "startedHoursAgo": 510,
+      "steps": [
+        {
+          "action": "label-issue",
+          "args": {
+            "add": [
+              "bug",
+              "needs-info"
+            ],
+            "remove": []
+          },
+          "afterSec": 20
+        },
+        {
+          "action": "request-repro",
+          "args": {
+            "missing": [
+              "version",
+              "steps"
+            ],
+            "message": "Thanks for the report, @pjotr! Could you share the `@agent-native/core` version and the exact steps to reproduce from a fresh template?"
+          },
+          "afterSec": 120
+        },
+        {
+          "action": "assign-issue",
+          "args": {
+            "assignee": "triage"
+          },
+          "afterSec": 45
+        }
+      ]
+    },
+    {
+      "issueId": "seed-010",
+      "actor": "me",
+      "startedHoursAgo": 490,
+      "steps": [
+        {
+          "action": "label-issue",
+          "args": {
+            "add": [
+              "bug",
+              "needs-info"
+            ],
+            "remove": []
+          },
+          "afterSec": 35
+        },
+        {
+          "action": "request-repro",
+          "args": {
+            "missing": [
+              "version",
+              "steps"
+            ],
+            "message": "Thanks for the report, @quinnbuilds! Could you share the `@agent-native/core` version and the exact steps to reproduce from a fresh template?"
+          },
+          "afterSec": 60
+        },
+        {
+          "action": "assign-issue",
+          "args": {
+            "assignee": "triage"
+          },
+          "afterSec": 55
+        }
+      ]
+    },
+    {
+      "issueId": "seed-011",
+      "actor": "me",
+      "startedHoursAgo": 470,
+      "steps": [
+        {
+          "action": "label-issue",
+          "args": {
+            "add": [
+              "bug",
+              "needs-info"
+            ],
+            "remove": []
+          },
+          "afterSec": 50
+        },
+        {
+          "action": "request-repro",
+          "args": {
+            "missing": [
+              "version",
+              "steps"
+            ],
+            "message": "Thanks for the report, @lunaops! Could you share the `@agent-native/core` version and the exact steps to reproduce from a fresh template?"
+          },
+          "afterSec": 90
+        },
+        {
+          "action": "assign-issue",
+          "args": {
+            "assignee": "triage"
+          },
+          "afterSec": 15
+        }
+      ]
+    },
+    {
+      "issueId": "seed-012",
+      "actor": "me",
+      "startedHoursAgo": 450,
+      "steps": [
+        {
+          "action": "label-issue",
+          "args": {
+            "add": [
+              "bug",
+              "needs-info"
+            ],
+            "remove": []
+          },
+          "afterSec": 65
+        },
+        {
+          "action": "request-repro",
+          "args": {
+            "missing": [
+              "version",
+              "steps"
+            ],
+            "message": "Thanks for the report, @rosa-m! Could you share the `@agent-native/core` version and the exact steps to reproduce from a fresh template?"
+          },
+          "afterSec": 120
+        },
+        {
+          "action": "assign-issue",
+          "args": {
+            "assignee": "triage"
+          },
+          "afterSec": 25
+        }
+      ]
+    },
+    {
+      "issueId": "seed-013",
+      "actor": "me",
+      "startedHoursAgo": 429,
+      "steps": [
+        {
+          "action": "label-issue",
+          "args": {
+            "add": [
+              "invalid"
+            ],
+            "remove": []
+          },
+          "afterSec": 30
+        },
+        {
+          "action": "close-issue",
+          "args": {
+            "reason": "invalid"
+          },
+          "afterSec": 25
+        }
+      ]
+    },
+    {
+      "issueId": "seed-014",
+      "actor": "me",
+      "startedHoursAgo": 409,
+      "steps": [
+        {
+          "action": "label-issue",
+          "args": {
+            "add": [
+              "invalid"
+            ],
+            "remove": []
+          },
+          "afterSec": 40
+        },
+        {
+          "action": "close-issue",
+          "args": {
+            "reason": "invalid"
+          },
+          "afterSec": 25
+        }
+      ]
+    },
+    {
+      "issueId": "seed-015",
+      "actor": "me",
+      "startedHoursAgo": 389,
+      "steps": [
+        {
+          "action": "label-issue",
+          "args": {
+            "add": [
+              "invalid"
+            ],
+            "remove": []
+          },
+          "afterSec": 50
+        },
+        {
+          "action": "close-issue",
+          "args": {
+            "reason": "invalid"
+          },
+          "afterSec": 25
+        }
+      ]
+    },
+    {
+      "issueId": "seed-016",
+      "actor": "bob@demo.local",
+      "startedHoursAgo": 371,
+      "steps": [
+        {
+          "action": "label-issue",
+          "args": {
+            "add": [
+              "invalid"
+            ],
+            "remove": []
+          },
+          "afterSec": 25
+        },
+        {
+          "action": "close-issue",
+          "args": {
+            "reason": "invalid"
+          },
+          "afterSec": 20
+        }
+      ]
+    },
+    {
+      "issueId": "seed-017",
+      "actor": "bob@demo.local",
+      "startedHoursAgo": 351,
+      "steps": [
+        {
+          "action": "label-issue",
+          "args": {
+            "add": [
+              "invalid"
+            ],
+            "remove": []
+          },
+          "afterSec": 30
+        },
+        {
+          "action": "close-issue",
+          "args": {
+            "reason": "invalid"
+          },
+          "afterSec": 20
+        }
+      ]
+    },
+    {
+      "issueId": "seed-018",
+      "actor": "bob@demo.local",
+      "startedHoursAgo": 331,
+      "steps": [
+        {
+          "action": "label-issue",
+          "args": {
+            "add": [
+              "invalid"
+            ],
+            "remove": []
+          },
+          "afterSec": 35
+        },
+        {
+          "action": "close-issue",
+          "args": {
+            "reason": "invalid"
+          },
+          "afterSec": 20
+        }
+      ]
+    },
+    {
+      "issueId": "seed-019",
+      "actor": "me",
+      "startedHoursAgo": 310,
+      "steps": [
+        {
+          "action": "label-issue",
+          "args": {
+            "add": [
+              "bug"
+            ],
+            "remove": []
+          },
+          "afterSec": 30
+        },
+        {
+          "action": "set-priority",
+          "args": {
+            "priority": "p2"
+          },
+          "afterSec": 40
+        },
+        {
+          "action": "set-component",
+          "args": {
+            "component": "core"
+          },
+          "afterSec": 35
+        }
+      ]
+    },
+    {
+      "issueId": "seed-020",
+      "actor": "me",
+      "startedHoursAgo": 290,
+      "steps": [
+        {
+          "action": "label-issue",
+          "args": {
+            "add": [
+              "bug"
+            ],
+            "remove": []
+          },
+          "afterSec": 30
+        },
+        {
+          "action": "set-priority",
+          "args": {
+            "priority": "p2"
+          },
+          "afterSec": 40
+        },
+        {
+          "action": "set-component",
+          "args": {
+            "component": "cli"
+          },
+          "afterSec": 35
+        }
+      ]
+    },
+    {
+      "issueId": "seed-021",
+      "actor": "me",
+      "startedHoursAgo": 270,
+      "steps": [
+        {
+          "action": "label-issue",
+          "args": {
+            "add": [
+              "bug"
+            ],
+            "remove": []
+          },
+          "afterSec": 30
+        },
+        {
+          "action": "set-priority",
+          "args": {
+            "priority": "p2"
+          },
+          "afterSec": 40
+        },
+        {
+          "action": "set-component",
+          "args": {
+            "component": "core"
+          },
+          "afterSec": 35
+        }
+      ]
+    },
+    {
+      "issueId": "seed-022",
+      "actor": "me",
+      "startedHoursAgo": 250,
+      "steps": [
+        {
+          "action": "label-issue",
+          "args": {
+            "add": [
+              "bug"
+            ],
+            "remove": []
+          },
+          "afterSec": 30
+        },
+        {
+          "action": "set-priority",
+          "args": {
+            "priority": "p2"
+          },
+          "afterSec": 40
+        },
+        {
+          "action": "set-component",
+          "args": {
+            "component": "ui"
+          },
+          "afterSec": 35
+        }
+      ]
+    },
+    {
+      "issueId": "seed-023",
+      "actor": "me",
+      "startedHoursAgo": 228,
+      "steps": [
+        {
+          "action": "label-issue",
+          "args": {
+            "add": [
+              "docs"
+            ],
+            "remove": []
+          },
+          "afterSec": 20
+        },
+        {
+          "action": "assign-issue",
+          "args": {
+            "assignee": "docs-team"
+          },
+          "afterSec": 25
+        }
+      ]
+    },
+    {
+      "issueId": "seed-024",
+      "actor": "me",
+      "startedHoursAgo": 208,
+      "steps": [
+        {
+          "action": "label-issue",
+          "args": {
+            "add": [
+              "docs"
+            ],
+            "remove": []
+          },
+          "afterSec": 20
+        },
+        {
+          "action": "assign-issue",
+          "args": {
+            "assignee": "docs-team"
+          },
+          "afterSec": 25
+        }
+      ]
+    },
+    {
+      "issueId": "seed-025",
+      "actor": "me",
+      "startedHoursAgo": 188,
+      "steps": [
+        {
+          "action": "label-issue",
+          "args": {
+            "add": [
+              "docs"
+            ],
+            "remove": []
+          },
+          "afterSec": 20
+        },
+        {
+          "action": "assign-issue",
+          "args": {
+            "assignee": "docs-team"
+          },
+          "afterSec": 25
+        }
+      ]
+    },
+    {
+      "issueId": "seed-026",
+      "actor": "me",
+      "startedHoursAgo": 167,
+      "steps": [
+        {
+          "action": "label-issue",
+          "args": {
+            "add": [
+              "feature"
+            ],
+            "remove": []
+          },
+          "afterSec": 30
+        },
+        {
+          "action": "set-priority",
+          "args": {
+            "priority": "p3"
+          },
+          "afterSec": 20
+        }
+      ]
+    },
+    {
+      "issueId": "seed-027",
+      "actor": "me",
+      "startedHoursAgo": 147,
+      "steps": [
+        {
+          "action": "label-issue",
+          "args": {
+            "add": [
+              "feature"
+            ],
+            "remove": []
+          },
+          "afterSec": 30
+        },
+        {
+          "action": "set-priority",
+          "args": {
+            "priority": "p3"
+          },
+          "afterSec": 20
+        }
+      ]
+    },
+    {
+      "issueId": "seed-028",
+      "actor": "me",
+      "startedHoursAgo": 127,
+      "steps": [
+        {
+          "action": "label-issue",
+          "args": {
+            "add": [
+              "feature"
+            ],
+            "remove": []
+          },
+          "afterSec": 30
+        },
+        {
+          "action": "set-priority",
+          "args": {
+            "priority": "p3"
+          },
+          "afterSec": 20
+        }
+      ]
+    },
+    {
+      "issueId": "seed-029",
+      "actor": "me",
+      "startedHoursAgo": 111,
+      "steps": [
+        {
+          "action": "label-issue",
+          "args": {
+            "add": [
+              "invalid"
+            ],
+            "remove": []
+          },
+          "afterSec": 10
+        },
+        {
+          "action": "close-issue",
+          "args": {
+            "reason": "invalid"
+          },
+          "afterSec": 10
+        }
+      ]
+    },
+    {
+      "issueId": "seed-030",
+      "actor": "me",
+      "startedHoursAgo": 91,
+      "steps": [
+        {
+          "action": "label-issue",
+          "args": {
+            "add": [
+              "invalid"
+            ],
+            "remove": []
+          },
+          "afterSec": 10
+        },
+        {
+          "action": "close-issue",
+          "args": {
+            "reason": "invalid"
+          },
+          "afterSec": 10
+        }
+      ]
+    }
+  ],
+  "comments": [
+    {
+      "issueId": "seed-001",
+      "author": "hikaru",
+      "body": "Sorry! I'm on `@agent-native/core 0.12.2`. I'll try to put together a minimal repro this week.",
+      "hoursAgo": 652
+    },
+    {
+      "issueId": "seed-004",
+      "author": "wren",
+      "body": "Sorry! I'm on `@agent-native/core 0.12.2`. I'll try to put together a minimal repro this week.",
+      "hoursAgo": 592
+    },
+    {
+      "issueId": "seed-007",
+      "author": "sarah-codes",
+      "body": "Sorry! I'm on `@agent-native/core 0.12.2`. I'll try to put together a minimal repro this week.",
+      "hoursAgo": 532
+    },
+    {
+      "issueId": "seed-010",
+      "author": "quinnbuilds",
+      "body": "Sorry! I'm on `@agent-native/core 0.12.2`. I'll try to put together a minimal repro this week.",
+      "hoursAgo": 472
+    }
+  ]
+}

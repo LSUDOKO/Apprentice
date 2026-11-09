@@ -1,0 +1,685 @@
+{
+  "repo": "demo/agent-native",
+  "issues": [
+    {
+      "id": "seed-001",
+      "number": 1,
+      "title": "Dev server crashes after adding a new action",
+      "body": "I added a new file to `actions/` and now the dev server just dies.\nIt was working fine yesterday. Not sure what changed on my side.\nAny idea what could cause this?",
+      "author": "hikaru",
+      "authorIsFirstTime": true,
+      "createdHoursAgo": 672,
+      "batch": "history"
+    },
+    {
+      "id": "seed-002",
+      "number": 2,
+      "title": "Sidebar is blank after login",
+      "body": "After signing in, the agent sidebar shows up empty and nothing loads.\nRefreshing doesn't help. This started this morning.",
+      "author": "oskar-t",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 652,
+      "batch": "history"
+    },
+    {
+      "id": "seed-003",
+      "number": 3,
+      "title": "Agent replies stop halfway through",
+      "body": "Longer answers from the agent just stop in the middle of a sentence.\nShort replies are fine. Happens most of the time for me.",
+      "author": "ngozi-a",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 632,
+      "batch": "history"
+    },
+    {
+      "id": "seed-004",
+      "number": 4,
+      "title": "Live sync doesn't update the list",
+      "body": "When the agent changes something, my list doesn't update until I reload the page.\nI thought this was supposed to be automatic?",
+      "author": "wren",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 612,
+      "batch": "history"
+    },
+    {
+      "id": "seed-005",
+      "number": 5,
+      "title": "Database error when saving a record",
+      "body": "Saving a record fails with a database error toast.\nIt worked on another machine. Really confusing.",
+      "author": "tobi-io",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 592,
+      "batch": "history"
+    },
+    {
+      "id": "seed-006",
+      "number": 6,
+      "title": "Build fails on deploy",
+      "body": "Deploying to my host fails during the build step, locally everything is fine.\nThe logs mention something about a missing export but I lost them.",
+      "author": "jules-p",
+      "authorIsFirstTime": true,
+      "createdHoursAgo": 572,
+      "batch": "history"
+    },
+    {
+      "id": "seed-007",
+      "number": 7,
+      "title": "Theme toggle is broken in dark mode",
+      "body": "Switching to dark mode leaves half the screen light.\nLooks really wrong, especially the sidebar.",
+      "author": "sarah-codes",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 552,
+      "batch": "history"
+    },
+    {
+      "id": "seed-008",
+      "number": 8,
+      "title": "Approve button does nothing",
+      "body": "When the agent asks for approval, clicking Approve does nothing at all.\nThe chat just sits there waiting.",
+      "author": "amir-k",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 532,
+      "batch": "history"
+    },
+    {
+      "id": "seed-009",
+      "number": 9,
+      "title": "Navigation breaks after opening settings",
+      "body": "If I open settings and go back, the app navigation stops working.\nLinks change the URL but the page doesn't update.",
+      "author": "pjotr",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 512,
+      "batch": "history"
+    },
+    {
+      "id": "seed-010",
+      "number": 10,
+      "title": "File upload fails silently",
+      "body": "Uploading a file looks like it works but the file never shows up.\nNo error message anywhere.",
+      "author": "quinnbuilds",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 492,
+      "batch": "history"
+    },
+    {
+      "id": "seed-011",
+      "number": 11,
+      "title": "Keyboard shortcuts stop working",
+      "body": "Cmd+K and other shortcuts stop working after a while.\nI have to reload the tab to get them back.",
+      "author": "lunaops",
+      "authorIsFirstTime": true,
+      "createdHoursAgo": 472,
+      "batch": "history"
+    },
+    {
+      "id": "seed-012",
+      "number": 12,
+      "title": "Agent can't see the current screen",
+      "body": "The agent keeps asking which item I mean even when I'm looking right at it.\nFeels like it doesn't know what's on screen.",
+      "author": "rosa-m",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 452,
+      "batch": "history"
+    },
+    {
+      "id": "seed-013",
+      "number": 13,
+      "title": "Login loop on Safari",
+      "body": "On Safari I get sent back to the login page over and over.\nChrome works. Not sure what is different.",
+      "author": "devin-r",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 432,
+      "batch": "history"
+    },
+    {
+      "id": "seed-014",
+      "number": 14,
+      "title": "Search returns nothing",
+      "body": "Search in my app returns nothing even for words I can see on the page.\nIt used to work.",
+      "author": "felixdev",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 412,
+      "batch": "history"
+    },
+    {
+      "id": "seed-015",
+      "number": 15,
+      "title": "Tooltip flickers and freezes the page",
+      "body": "Hovering a tooltip makes it flicker and sometimes the whole page freezes for a second.\nVery annoying.",
+      "author": "mkato",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 392,
+      "batch": "history"
+    },
+    {
+      "id": "seed-016",
+      "number": 16,
+      "title": "Webhooks stopped firing",
+      "body": "My webhooks just stopped firing after an update.\nNothing in the logs that I can find.",
+      "author": "hikaru",
+      "authorIsFirstTime": true,
+      "createdHoursAgo": 372,
+      "batch": "history"
+    },
+    {
+      "id": "seed-017",
+      "number": 17,
+      "title": "Chat history disappears",
+      "body": "My chat history is gone after restarting the dev server.\nIs that expected? It seems wrong.",
+      "author": "oskar-t",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 352,
+      "batch": "history"
+    },
+    {
+      "id": "seed-018",
+      "number": 18,
+      "title": "Error toast on every page load",
+      "body": "Every time a page loads I get a red error toast that says something went wrong.\nThe app still works though.",
+      "author": "ngozi-a",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 332,
+      "batch": "history"
+    },
+    {
+      "id": "seed-019",
+      "number": 19,
+      "title": "Action with optional array param fails validation",
+      "body": "@agent-native/core 0.12.3, Node 22.\n\nSteps to reproduce:\n1. Create an action with `z.array(z.string()).optional()`\n2. Call it without the param from the CLI\n\nExpected: the action runs.\nActual: validation error `expected array`.",
+      "author": "wren",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 312,
+      "batch": "history"
+    },
+    {
+      "id": "seed-020",
+      "number": 20,
+      "title": "CLI `create` ignores --template flag",
+      "body": "Version: @agent-native/core 0.12.1\n\nSteps to reproduce:\n1. Run `npx @agent-native/core create demo --template mail`\n2. Open the generated app\n\nExpected: mail template.\nActual: default template.",
+      "author": "tobi-io",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 292,
+      "batch": "history"
+    },
+    {
+      "id": "seed-021",
+      "number": 21,
+      "title": "Drizzle migration runs twice on PGlite",
+      "body": "Using @agent-native/core 0.12.2 with PGlite.\n\nSteps to reproduce:\n1. Add a migration entry\n2. Restart `pnpm dev` twice\n\nExpected: runs once.\nActual: the second start errors with `relation already exists`.",
+      "author": "jules-p",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 272,
+      "batch": "history"
+    },
+    {
+      "id": "seed-022",
+      "number": 22,
+      "title": "Sidebar button loses focus ring",
+      "body": "@agent-native/core 0.12.3\n\nSteps to reproduce:\n1. Tab to the sidebar toggle\n2. Press Enter\n\nExpected: focus ring stays visible.\nActual: focus ring disappears.",
+      "author": "sarah-codes",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 252,
+      "batch": "history"
+    },
+    {
+      "id": "seed-023",
+      "number": 23,
+      "title": "Typo in the actions docs",
+      "body": "The page on defining actions says `defineActon` in the second example.",
+      "author": "amir-k",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 232,
+      "batch": "history"
+    },
+    {
+      "id": "seed-024",
+      "number": 24,
+      "title": "Docs: deploy guide links to a missing page",
+      "body": "The documentation link to the Netlify guide is a 404.",
+      "author": "pjotr",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 212,
+      "batch": "history"
+    },
+    {
+      "id": "seed-025",
+      "number": 25,
+      "title": "README quick start uses an old command",
+      "body": "The README still says `npm run start-dev`, the guide uses `pnpm dev`.",
+      "author": "quinnbuilds",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 192,
+      "batch": "history"
+    },
+    {
+      "id": "seed-026",
+      "number": 26,
+      "title": "Feature request: export audit log as JSON",
+      "body": "It would be nice to export the audit log as JSON as well as CSV.",
+      "author": "lunaops",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 172,
+      "batch": "history"
+    },
+    {
+      "id": "seed-027",
+      "number": 27,
+      "title": "Please add a way to pin chat threads",
+      "body": "Could we pin important chat threads to the top of the sidebar?",
+      "author": "rosa-m",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 152,
+      "batch": "history"
+    },
+    {
+      "id": "seed-028",
+      "number": 28,
+      "title": "Support for custom fonts in the design system",
+      "body": "Feature request: allow custom font families in the design tokens.",
+      "author": "devin-r",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 132,
+      "batch": "history"
+    },
+    {
+      "id": "seed-029",
+      "number": 29,
+      "title": "Best crypto giveaway, click here",
+      "body": "Free money for everyone!! https://example.invalid/a https://example.invalid/b https://example.invalid/c click here now",
+      "author": "felixdev",
+      "authorIsFirstTime": true,
+      "createdHoursAgo": 112,
+      "batch": "history"
+    },
+    {
+      "id": "seed-030",
+      "number": 30,
+      "title": "Cheap SEO services for your repo",
+      "body": "We offer cheap SEO services and buy followers packages. https://example.invalid/seo https://example.invalid/deal https://example.invalid/x",
+      "author": "mkato",
+      "authorIsFirstTime": true,
+      "createdHoursAgo": 92,
+      "batch": "history"
+    },
+    {
+      "id": "seed-031",
+      "number": 31,
+      "title": "Recurring job runs twice",
+      "body": "My scheduled job seems to run twice every hour.\nI only created it once.",
+      "author": "hikaru",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 40,
+      "batch": "live"
+    },
+    {
+      "id": "seed-032",
+      "number": 32,
+      "title": "MCP connector fails to connect",
+      "body": "Adding the app as a connector in my chat app fails with a generic error.\nI followed the docs.",
+      "author": "oskar-t",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 39,
+      "batch": "live"
+    },
+    {
+      "id": "seed-033",
+      "number": 33,
+      "title": "Markdown renders wrong in comments",
+      "body": "Code in comments renders as one long line and lists are broken.\nUsed to look fine.",
+      "author": "ngozi-a",
+      "authorIsFirstTime": true,
+      "createdHoursAgo": 38,
+      "batch": "live"
+    },
+    {
+      "id": "seed-034",
+      "number": 34,
+      "title": "Agent sidebar stuck on loading",
+      "body": "The agent sidebar spinner never ends. I can't type anything.\nHappens every time I open the app.",
+      "author": "wren",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 37,
+      "batch": "live"
+    },
+    {
+      "id": "seed-035",
+      "number": 35,
+      "title": "Mobile layout is broken",
+      "body": "On my phone the layout overflows and buttons are cut off.\nDesktop is fine.",
+      "author": "tobi-io",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 36,
+      "batch": "live"
+    },
+    {
+      "id": "seed-036",
+      "number": 36,
+      "title": "Voice input doesn't start",
+      "body": "Clicking the mic in the composer does nothing.\nI allowed microphone access.",
+      "author": "jules-p",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 35,
+      "batch": "live"
+    },
+    {
+      "id": "seed-037",
+      "number": 37,
+      "title": "Copy button copies the wrong text",
+      "body": "The copy button on code blocks copies the wrong snippet.\nIt grabs the one above it.",
+      "author": "sarah-codes",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 34,
+      "batch": "live"
+    },
+    {
+      "id": "seed-038",
+      "number": 38,
+      "title": "Is this a bug? Sidebar errors with my config",
+      "body": "Not sure if this is a bug or my setup — the sidebar shows an error with this config:\n\n```ts\nexport default defineAgentNativeConfig({ harness: true, sidebar: { width: 'wide' } });\n```\n\nIs `sidebar.width` supposed to accept a string?",
+      "author": "amir-k",
+      "authorIsFirstTime": true,
+      "createdHoursAgo": 33,
+      "batch": "live"
+    },
+    {
+      "id": "seed-039",
+      "number": 39,
+      "title": "Template sync drops custom routes",
+      "body": "Version 0.12.0 of @agent-native/core.\n\nSteps to reproduce:\n1. Add `app/routes/reports.tsx`\n2. Run the template sync\n\nExpected: custom route kept.\nActual: the file is removed.",
+      "author": "pjotr",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 32,
+      "batch": "live"
+    },
+    {
+      "id": "seed-040",
+      "number": 40,
+      "title": "`pnpm action` hangs when dev server is down",
+      "body": "@agent-native/core 0.12.4\n\nSteps to reproduce:\n1. Stop the dev server\n2. Run `pnpm action list-items`\n\nExpected: runs against the local DB or errors.\nActual: hangs forever.",
+      "author": "quinnbuilds",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 31,
+      "batch": "live"
+    },
+    {
+      "id": "seed-041",
+      "number": 41,
+      "title": "Database query returns stale rows after update",
+      "body": "@agent-native/core 0.12.3, Postgres 16.\n\nSteps to reproduce:\n1. Update a row from an action\n2. Read it back in the same request\n\nExpected: new value.\nActual: old value.",
+      "author": "lunaops",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 30,
+      "batch": "live"
+    },
+    {
+      "id": "seed-042",
+      "number": 42,
+      "title": "Dark mode tokens missing in settings pane",
+      "body": "@agent-native/core 0.12.2\n\nSteps to reproduce:\n1. Switch to dark mode\n2. Open Settings\n\nExpected: dark surfaces.\nActual: white cards on a dark background.",
+      "author": "rosa-m",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 29,
+      "batch": "live"
+    },
+    {
+      "id": "seed-043",
+      "number": 43,
+      "title": "Server crashes with TypeError in action runner",
+      "body": "@agent-native/core 0.12.3\n\nThe server process exits when calling any action from chat:\n\n```\nTypeError: Cannot read properties of undefined (reading 'userEmail')\n    at runAction (/app/node_modules/@agent-native/core/dist/action.js:412:23)\n    at async handleToolCall (/app/node_modules/@agent-native/core/dist/agent/loop.js:88:11)\n```",
+      "author": "devin-r",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 28,
+      "batch": "live"
+    },
+    {
+      "id": "seed-044",
+      "number": 44,
+      "title": "Crash on startup: migration lock timeout",
+      "body": "@agent-native/core 0.12.4 on Node 22.\n\n```\nError: Migration lock not acquired after 30000ms\n    at acquireLock (/app/node_modules/@agent-native/core/dist/db/migrate.js:57:15)\n    at async runMigrations (/app/node_modules/@agent-native/core/dist/db/migrate.js:102:5)\n```",
+      "author": "felixdev",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 27,
+      "batch": "live"
+    },
+    {
+      "id": "seed-045",
+      "number": 45,
+      "title": "Agent loop crashes when a tool returns a Date",
+      "body": "@agent-native/core 0.12.3\n\n```\nRangeError: Invalid time value\n    at Date.toISOString (<anonymous>)\n    at serializeResult (/app/node_modules/@agent-native/core/dist/agent/serialize.js:31:20)\n```",
+      "author": "mkato",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 26,
+      "batch": "live"
+    },
+    {
+      "id": "seed-046",
+      "number": 46,
+      "title": "SSR crash: window is not defined",
+      "body": "@agent-native/core 0.12.2\n\n```\nReferenceError: window is not defined\n    at useRecorder (/app/node_modules/@agent-native/core/dist/client/recorder.js:14:9)\n    at renderToPipeableStream (/app/node_modules/react-dom/server.js:120:3)\n```",
+      "author": "hikaru",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 25,
+      "batch": "live"
+    },
+    {
+      "id": "seed-047",
+      "number": 47,
+      "title": "Saving fails with a database error (0.12.3)",
+      "body": "Same as database error when saving a record? Running @agent-native/core 0.12.3.\n\nSaving a record fails with a database error toast.\nIt worked on another machine. Really confusing.",
+      "author": "oskar-t",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 24,
+      "batch": "live"
+    },
+    {
+      "id": "seed-048",
+      "number": 48,
+      "title": "DB error toast when I save — @agent-native/core 0.12.3",
+      "body": "Same as database error when saving a record? Running @agent-native/core 0.12.3.\n\nSaving a record fails with a database error toast.\nIt worked on another machine. Really confusing.",
+      "author": "ngozi-a",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 23,
+      "batch": "live"
+    },
+    {
+      "id": "seed-049",
+      "number": 49,
+      "title": "Approve in chat is unresponsive on 0.12.4",
+      "body": "Same as navigation breaks after opening settings? Running @agent-native/core 0.12.3.\n\nIf I open settings and go back, the app navigation stops working.\nLinks change the URL but the page doesn't update.",
+      "author": "wren",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 22,
+      "batch": "live"
+    },
+    {
+      "id": "seed-050",
+      "number": 50,
+      "title": "Clicking Approve doesn't continue the agent run, version 0.12.3",
+      "body": "Same as navigation breaks after opening settings? Running @agent-native/core 0.12.3.\n\nIf I open settings and go back, the app navigation stops working.\nLinks change the URL but the page doesn't update.",
+      "author": "tobi-io",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 21,
+      "batch": "live"
+    },
+    {
+      "id": "seed-051",
+      "number": 51,
+      "title": "Documentation for recurring jobs is unclear",
+      "body": "The docs don't explain where jobs are stored or how to run one now.",
+      "author": "jules-p",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 20,
+      "batch": "live"
+    },
+    {
+      "id": "seed-052",
+      "number": 52,
+      "title": "Typo in the sharing guide",
+      "body": "\"permisions\" should be \"permissions\" in the sharing documentation.",
+      "author": "sarah-codes",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 19,
+      "batch": "live"
+    },
+    {
+      "id": "seed-053",
+      "number": 53,
+      "title": "Docs: missing example for useDbSync realtime",
+      "body": "The client data documentation mentions realtime but has no example.",
+      "author": "amir-k",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 18,
+      "batch": "live"
+    },
+    {
+      "id": "seed-054",
+      "number": 54,
+      "title": "Tutorial step 3 screenshot is outdated",
+      "body": "The tutorial screenshot shows the old sidebar.",
+      "author": "pjotr",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 17,
+      "batch": "live"
+    },
+    {
+      "id": "seed-055",
+      "number": 55,
+      "title": "Discount loan offer",
+      "body": "Get a discount loan today https://example.invalid/1 https://example.invalid/2 https://example.invalid/3",
+      "author": "quinnbuilds",
+      "authorIsFirstTime": true,
+      "createdHoursAgo": 16,
+      "batch": "live"
+    },
+    {
+      "id": "seed-056",
+      "number": 56,
+      "title": "Casino bonus for developers",
+      "body": "Casino bonus, click here: https://example.invalid/c1 https://example.invalid/c2 https://example.invalid/c3",
+      "author": "lunaops",
+      "authorIsFirstTime": true,
+      "createdHoursAgo": 15,
+      "batch": "live"
+    },
+    {
+      "id": "seed-057",
+      "number": 57,
+      "title": "Feature request: bulk actions in lists",
+      "body": "Please add a way to select many rows and run one action on all of them.",
+      "author": "rosa-m",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 14,
+      "batch": "live"
+    },
+    {
+      "id": "seed-058",
+      "number": 58,
+      "title": "Proposal: keyboard shortcut editor",
+      "body": "Would be nice to rebind keyboard shortcuts from settings.",
+      "author": "devin-r",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 13,
+      "batch": "live"
+    },
+    {
+      "id": "seed-059",
+      "number": 59,
+      "title": "Feature request: Slack threads for digests",
+      "body": "Could we post digests as threads instead of new messages?",
+      "author": "felixdev",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 12,
+      "batch": "live"
+    },
+    {
+      "id": "seed-060",
+      "number": 60,
+      "title": "Please add dark mode screenshots to docs",
+      "body": "Feature request: show both themes in the screenshots.",
+      "author": "mkato",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 11,
+      "batch": "live"
+    },
+    {
+      "id": "seed-061",
+      "number": 61,
+      "title": "Extensions page crashes the tab",
+      "body": "Opening the extensions page makes the whole tab unresponsive.\nHappened twice today.",
+      "author": "hikaru",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 0,
+      "batch": "incoming"
+    },
+    {
+      "id": "seed-062",
+      "number": 62,
+      "title": "Notifications never arrive",
+      "body": "I never get notifications even though they are enabled.\nNot sure where to look.",
+      "author": "oskar-t",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 0,
+      "batch": "incoming"
+    },
+    {
+      "id": "seed-063",
+      "number": 63,
+      "title": "Agent forgets the selected rows",
+      "body": "I select rows and ask the agent to act on them, but it says nothing is selected.\nThis worked before.",
+      "author": "ngozi-a",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 0,
+      "batch": "incoming"
+    },
+    {
+      "id": "seed-064",
+      "number": 64,
+      "title": "Export button downloads an empty file",
+      "body": "Clicking export gives me an empty file every time.\nThe data is definitely there.",
+      "author": "wren",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 0,
+      "batch": "incoming"
+    },
+    {
+      "id": "seed-065",
+      "number": 65,
+      "title": "Org switcher shows the wrong workspace",
+      "body": "After switching orgs the header still shows the old workspace name.\nData seems mixed up.",
+      "author": "tobi-io",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 0,
+      "batch": "incoming"
+    },
+    {
+      "id": "seed-066",
+      "number": 66,
+      "title": "Dark mode chart colors unreadable",
+      "body": "@agent-native/core 0.12.4\n\nSteps to reproduce:\n1. Switch to dark mode\n2. Open a chart\n\nExpected: readable colors.\nActual: dark grey on black.",
+      "author": "jules-p",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 0,
+      "batch": "incoming"
+    },
+    {
+      "id": "seed-067",
+      "number": 67,
+      "title": "Typo in the evals docs",
+      "body": "The documentation for evals says `usesTol` instead of `usesTool`.",
+      "author": "sarah-codes",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 0,
+      "batch": "incoming"
+    },
+    {
+      "id": "seed-068",
+      "number": 68,
+      "title": "Feature request: per-playbook notifications",
+      "body": "It would be nice to get notified per playbook, not globally.",
+      "author": "amir-k",
+      "authorIsFirstTime": false,
+      "createdHoursAgo": 0,
+      "batch": "incoming"
+    }
+  ]
+}
