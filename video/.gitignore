@@ -1,0 +1,13 @@
+
+capture/state.json
+dist
+.DS_Store
+.env
+# Ignore the output video from Git but not videos you import into src/.
+node_modules
+out
+out/
+public/music.wav
+public/sfx/
+public/shots/
+public/vo/

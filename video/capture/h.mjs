@@ -1,0 +1,10 @@
+import { open, shot, toast } from './lib.mjs';
+const { b, p } = await open();
+const w = (ms) => p.waitForTimeout(ms);
+await p.goto('http://localhost:8080/review'); await w(3500);
+await p.getByRole('button', { name: /Override/ }).click(); await w(1500);
+console.log('DLG', await p.getByRole('dialog').first().innerText().catch(() => 'nodlg'));
+console.log('MAIN', (await p.locator('main').innerText()).split('Skip')[1]?.slice(0, 800));
+console.log('BTNS', JSON.stringify(await p.locator('main button, [role=dialog] button').evaluateAll(els => els.map(e => e.innerText.trim().replace(/\s+/g, ' ').slice(0, 40)).filter(Boolean))));
+await shot(p, 'h01-override', null);
+await b.close();

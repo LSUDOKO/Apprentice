@@ -1,0 +1,13 @@
+import { open, shot, toast } from './lib.mjs';
+const { b, p } = await open();
+const w = (ms) => p.waitForTimeout(ms);
+const btn = (name, o = {}) => p.getByRole('button', { name, ...o });
+await p.goto('http://localhost:8080/issues?filter=untriaged'); await btn('Make playbook (my way)').waitFor({ timeout: 30000 }); await w(1500);
+await shot(p, 'c01-pattern', btn('Make playbook (my way)'));
+await btn('Make playbook (my way)').click(); await p.waitForURL(/playbooks\//, { timeout: 30000 }); await w(3500);
+console.log(p.url());
+await shot(p, 'c02-editor', null);
+const ctrls = await p.locator('main button, main [role=tab], main a').evaluateAll(els => els.map(e => (e.getAttribute('aria-label') || e.innerText || '').trim().replace(/\s+/g,' ').slice(0, 60)).filter(Boolean));
+console.log(JSON.stringify(ctrls));
+console.log((await p.locator('main').innerText()).slice(0, 2500));
+await b.close();

@@ -1,0 +1,17 @@
+import { open, shot, toast } from './lib.mjs';
+const { b, p } = await open();
+const w = (ms) => p.waitForTimeout(ms);
+const btn = (name, o = {}) => p.getByRole('button', { name, ...o });
+await p.goto('http://localhost:8080/playbooks'); await w(3000);
+await p.getByText('Needs-info for unversioned bugs').first().click(); await p.waitForURL(/playbooks\/pb_/); await w(3500);
+console.log('toast1', await toast(p));
+console.log((await p.locator('main').innerText()).slice(0, 420));
+await btn(/Promote to/).click(); await w(2500);
+console.log('toast2', await toast(p));
+console.log((await p.locator('main').innerText()).slice(0, 420));
+await shot(p, 'f02-after-promote2', null);
+await btn('Run on untriaged').click(); await w(7000);
+console.log('run', p.url(), await toast(p));
+console.log((await p.locator('main').innerText()).slice(0, 1200));
+await shot(p, 'f03-act-run', null);
+await b.close();

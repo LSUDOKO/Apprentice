@@ -166,14 +166,22 @@ type GithubIssue = { number: number; title: string; body: string | null; user: {
 
 /** Read-only GitHub import (08 §8.8). Idempotent by gh_<repo>_<number>. Never writes to GitHub. */
 export async function importGithubIssues(scope: Scope, repo: string, limit: number) {
-  const res = await fetch(`https://api.github.com/repos/${repo}/issues?state=open&per_page=${Math.min(limit, 100)}`, {
-    headers: { Accept: "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28", "User-Agent": "apprentice-agent-native" },
-    signal: AbortSignal.timeout(15_000),
-  }).catch(() => fail("Couldn't reach GitHub. Check your connection and try again.", { errorCode: "GITHUB_UNREACHABLE", statusCode: 502 }));
-  if (res.status === 404) fail(`Repository ${repo} not found (or private).`, { errorCode: "GITHUB_NOT_FOUND", statusCode: 404 });
-  if (res.status === 403 || res.status === 429) fail("GitHub rate limit reached (60 requests/hour without a token). Try again later.", { errorCode: "GITHUB_RATE_LIMIT", statusCode: 429 });
-  if (!res.ok) fail(`GitHub returned ${res.status}.`, { errorCode: "GITHUB_ERROR", statusCode: 502 });
-  const items = ((await res.json()) as GithubIssue[]).filter((i) => !i.pull_request).slice(0, limit);
+  // GitHub's issues endpoint also returns pull requests, so busy repos can fill a whole page with PRs.
+  // Page until we have `limit` real issues. ponytail: max 5 pages (5 of the 60/hour unauthenticated requests).
+  const items: GithubIssue[] = [];
+  for (let page = 1; page <= 5 && items.length < limit; page++) {
+    const res = await fetch(`https://api.github.com/repos/${repo}/issues?state=open&per_page=100&page=${page}`, {
+      headers: { Accept: "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28", "User-Agent": "apprentice-agent-native" },
+      signal: AbortSignal.timeout(15_000),
+    }).catch(() => fail("Couldn't reach GitHub. Check your connection and try again.", { errorCode: "GITHUB_UNREACHABLE", statusCode: 502 }));
+    if (res.status === 404) fail(`Repository ${repo} not found (or private).`, { errorCode: "GITHUB_NOT_FOUND", statusCode: 404 });
+    if (res.status === 403 || res.status === 429) fail("GitHub rate limit reached (60 requests/hour without a token). Try again later.", { errorCode: "GITHUB_RATE_LIMIT", statusCode: 429 });
+    if (!res.ok) fail(`GitHub returned ${res.status}.`, { errorCode: "GITHUB_ERROR", statusCode: 502 });
+    const batch = (await res.json()) as GithubIssue[];
+    items.push(...batch.filter((i) => !i.pull_request));
+    if (batch.length < 100) break;
+  }
+  items.splice(limit);
   const safeRepo = repo.replace(/[^a-zA-Z0-9_.-]/g, "_");
   let imported = 0;
   for (const gh of items) {

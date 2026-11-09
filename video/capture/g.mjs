@@ -1,0 +1,13 @@
+import { open, shot, toast } from './lib.mjs';
+const { b, p } = await open();
+const w = (ms) => p.waitForTimeout(ms);
+const btn = (name, o = {}) => p.getByRole('button', { name, ...o });
+await p.goto('http://localhost:8080/preferences'); await p.getByPlaceholder('owner/name').waitFor(); await w(1000);
+await btn('Simulate 4 new issues').click(); await w(3000); console.log('sim', await toast(p));
+await p.goto('http://localhost:8080/playbooks'); await w(2500);
+await p.getByText('Needs-info for unversioned bugs').first().click(); await p.waitForURL(/playbooks\/pb_/); await w(3500);
+await btn('Run on untriaged').click(); await p.waitForURL(/review/, { timeout: 30000 }); await w(7000);
+console.log('ACT RUN', (await p.locator('main').innerText()).slice(0, 1500));
+console.log('BTNS', JSON.stringify(await p.locator('main button').evaluateAll(els => els.map(e => e.innerText.trim().replace(/\s+/g, ' ').slice(0, 40)).filter(Boolean))));
+await shot(p, 'g01-act', null);
+await b.close();

@@ -1,0 +1,12 @@
+import { chromium } from 'playwright';
+const root = new URL('../../docs/deck/', import.meta.url).pathname;
+const b = await chromium.launch({ executablePath: process.env.HOME + '/.cache/ms-playwright/chromium-1243/chrome-linux64/chrome' });
+const p = await b.newPage({ viewport: { width: 1920, height: 1080 } });
+await p.goto('file://' + root + 'deck.html', { waitUntil: 'networkidle' });
+await p.evaluate(() => document.fonts.ready);
+await p.waitForTimeout(1500);
+await p.pdf({ path: root + 'Apprentice-deck.pdf', width: '1920px', height: '1080px', printBackground: true, preferCSSPageSize: true });
+const n = await p.locator('section.slide').count();
+for (let i = 0; i < n; i++) await p.locator('section.slide').nth(i).screenshot({ path: `/tmp/claude-1000/st/s${String(i + 1).padStart(2, '0')}.jpg`, quality: 70 });
+console.log('slides', n);
+await b.close();

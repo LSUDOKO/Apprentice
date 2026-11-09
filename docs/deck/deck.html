@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Apprentice — Deck</title>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  @page { size: 1920px 1080px; margin: 0; }
+  :root {
+    --bg: #0B0D08; --surface: #13160E; --line: #2A2F1D; --text: #ECEEDF; --dim: #B8BEA6; --muted: #8E957D;
+    --lime: #DDF26B; --ok: #B5E655; --warn: #F5C451; --bad: #FF7A6B; --item: #5EEAD4; --agent: #C4B5FD;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); }
+  body { font-family: Geist, sans-serif; color: var(--text); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .slide { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: var(--bg); page-break-after: always; break-after: page; }
+  .slide::before { content: ""; position: absolute; inset: 0; opacity: .055; background-image: linear-gradient(var(--text) 1px, transparent 1px), linear-gradient(90deg, var(--text) 1px, transparent 1px); background-size: 80px 80px; }
+  .slide::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 55%, rgb(0 0 0 / .5) 100%); pointer-events: none; }
+  .grain { position: absolute; inset: 0; opacity: .1; mix-blend-mode: overlay; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); z-index: 1; pointer-events: none; }
+  .orb { position: absolute; border-radius: 50%; background: radial-gradient(circle at 50% 18%, #f4ffb8 0%, #DDF26B 18%, #8fa035 46%, #2a3112 72%, #11140a 100%); box-shadow: inset 0 3px 0 rgb(255 255 255 / .45), 0 0 180px -10px rgb(221 242 107 / .45); }
+  .x { position: absolute; color: var(--muted); font-family: 'Geist Mono'; font-size: 22px; opacity: .6; }
+  .in { position: absolute; inset: 0; padding: 96px; z-index: 2; }
+  .label { font-family: 'Geist Mono', monospace; font-size: 18px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .label b { color: var(--lime); font-weight: 500; }
+  .num { position: absolute; right: 96px; top: 96px; z-index: 2; }
+  h1 { font-size: 150px; font-weight: 600; letter-spacing: -0.05em; line-height: .95; }
+  h2 { font-size: 84px; font-weight: 600; letter-spacing: -0.045em; line-height: 1.0; margin-top: 26px; max-width: 1300px; }
+  h3 { font-size: 34px; font-weight: 600; letter-spacing: -0.02em; }
+  .lime { color: var(--lime); }
+  p.lead { font-size: 32px; line-height: 1.38; color: var(--dim); margin-top: 28px; max-width: 980px; letter-spacing: -0.01em; }
+  p { font-size: 24px; line-height: 1.45; color: var(--dim); }
+  code, .mono { font-family: 'Geist Mono', monospace; }
+  .brand { display: flex; align-items: center; gap: 22px; font-size: 34px; font-weight: 500; }
+  .shot { position: absolute; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: var(--surface); box-shadow: 0 40px 120px -30px rgb(0 0 0 / .85), 0 0 90px -40px rgb(221 242 107 / .4); }
+  .shot img { position: absolute; display: block; }
+  .tag { position: absolute; font-family: 'Geist Mono'; font-size: 15px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); display: flex; gap: 12px; align-items: center; }
+  .tag::before { content: ""; width: 8px; height: 8px; border-radius: 8px; background: var(--lime); box-shadow: 0 0 10px var(--lime); }
+  .chip { display: inline-flex; align-items: center; gap: 12px; padding: 12px 22px; border-radius: 10px; font-size: 24px; font-weight: 500; white-space: nowrap;
+    background: linear-gradient(180deg, rgb(255 255 255 / .09), rgb(255 255 255 / .03)), rgb(19 22 14 / .85); border: 1px solid rgb(221 242 107 / .35);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / .18), 0 10px 40px -10px rgb(221 242 107 / .35); }
+  .chip::before { content: ""; width: 9px; height: 9px; border-radius: 9px; background: var(--c, var(--lime)); box-shadow: 0 0 12px var(--c, var(--lime)); }
+  .card { background: linear-gradient(180deg, rgb(255 255 255 / .05), rgb(255 255 255 / .01)), var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 34px; }
+  .stat { font-size: 120px; font-weight: 600; letter-spacing: -0.05em; line-height: 1; color: var(--lime); text-shadow: 0 0 60px rgb(221 242 107 / .3); }
+  .row { display: flex; gap: 28px; }
+  .foot { position: absolute; left: 96px; bottom: 60px; z-index: 2; }
+  table { border-collapse: collapse; width: 100%; font-size: 24px; }
+  td, th { padding: 18px 20px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+  th { font-family: 'Geist Mono'; font-size: 16px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 400; }
+  td { color: var(--dim); }
+  td:first-child { color: var(--text); font-weight: 500; }
+  .code { font-family: 'Geist Mono'; font-size: 22px; line-height: 1.6; color: var(--dim); white-space: pre; background: rgb(11 13 8 / .92); border: 1px solid var(--line); border-radius: 14px; padding: 30px 34px; box-shadow: 0 30px 80px -20px rgb(0 0 0 / .8), 0 0 60px -30px var(--lime); }
+  .code .c { color: var(--muted); } .code .h { color: var(--lime); }
+</style>
+</head>
+<body>
+
+<!-- 1. Title -->
+<section class="slide">
+  <div class="orb" style="width:820px;height:820px;right:-160px;top:150px"></div>
+  <span class="x" style="left:72px;top:72px">+</span><span class="x" style="left:1032px;top:72px">+</span><span class="x" style="left:72px;top:1000px">+</span>
+  <div class="in">
+    <div class="brand"><svg width="64" height="64" viewBox="0 0 64 64"><rect x=".5" y=".5" width="63" height="63" rx="14" fill="#13160E" stroke="#2A2F1D"/><path d="M14 46 L28 16 h8 L50 46 h-9 l-3-7 H26 l-3 7Z M29 31 h6 l-3-8Z" fill="#DDF26B"/></svg>Apprentice</div>
+    <h1 style="margin-top:150px">Show it once.<br><span class="lime">Delegate forever.</span></h1>
+    <p class="lead">The agent that learns your issue triage by watching you work, proves it with backtests and regression tests, then earns autonomy on a trust ladder.</p>
+  </div>
+  <div class="foot label">Builder.io Agent-Native Hackathon · 2026 · built on <b>Agent-Native</b></div>
+  <div class="grain"></div>
+</section>
+
+<!-- 2. Problem -->
+<section class="slide">
+  <div class="num label">01 · the problem</div>
+  <div class="in">
+    <div class="label">every maintainer, every morning</div>
+    <h2>Same issue. Same four clicks. <span style="color:var(--bad)">Again.</span></h2>
+    <p class="lead">Bug reports keep arriving with no version and no steps. Triage is the same ritual each time: label it, ask for a repro, assign it, next. Agents could help, but today that means writing a prompt and then hoping it's right.</p>
+    <div class="row" style="margin-top:70px">
+      <div class="card" style="width:560px"><div class="label">github.com/BuilderIO/agent-native #8301</div><h3 style="margin-top:12px">Error screen: Something went wrong</h3><p style="margin-top:14px"><span class="mono" style="color:var(--bad)">version: none · steps: none</span></p></div>
+      <div class="card" style="width:560px"><div class="label">github.com/BuilderIO/agent-native #8141</div><h3 style="margin-top:12px">Error screen: Something went wrong</h3><p style="margin-top:14px"><span class="mono" style="color:var(--bad)">version: none · steps: none</span></p></div>
+      <div class="card" style="width:470px"><div class="label">the ritual</div><p class="mono" style="margin-top:14px;color:var(--text);font-size:24px;line-height:1.7">+ needs-info<br>+ bug<br>request repro<br>assign → triage</p></div>
+    </div>
+  </div>
+  <div class="foot label">real open issues imported read-only from the Agent-Native repo</div>
+  <div class="grain"></div>
+</section>
+
+<!-- 3. Insight -->
+<section class="slide">
+  <div class="orb" style="width:420px;height:420px;left:-120px;bottom:-140px;opacity:.6"></div>
+  <div class="num label">02 · the insight</div>
+  <div class="in">
+    <div class="label">why this only works on <b>agent-native</b></div>
+    <h2>A click and an agent call are <span class="lime">the same typed action.</span></h2>
+    <p class="lead">In Agent-Native, the UI and the agent share one set of actions. So every triage click is already a structured demonstration: action name, typed arguments, the issue it touched. No screen scraping, no guessing.</p>
+    <div style="position:absolute;left:1080px;top:470px" class="code"><span class="c">// actions/label-issue.ts</span>
+export default defineAction({
+  schema: z.object({
+    issueId, add, remove,
+    <span class="h">playbookContext</span>,
+  }),
+  ...domainAction("label-issue", …),
+});</div>
+    <div style="position:absolute;left:96px;top:600px;display:flex;flex-direction:column;gap:22px">
+      <span class="chip" style="--c:var(--item)">Maya clicks “+ needs-info”</span>
+      <span class="chip" style="--c:var(--agent)">The agent calls label-issue</span>
+      <span class="chip">Same action → recorded as a demonstration</span>
+    </div>
+  </div>
+  <div class="grain"></div>
+</section>
+
+<!-- 4. How it works -->
+<section class="slide">
+  <div class="num label">03 · how it works</div>
+  <div class="in">
+    <div class="label">the loop</div>
+    <h2>Watch. Prove. <span class="lime">Then act.</span></h2>
+    <div class="row" style="margin-top:90px;gap:20px">
+      <div class="card" style="flex:1"><div class="label"><b>1</b> watch</div><h3 style="margin-top:16px">Typed clicks become demonstrations</h3><p style="margin-top:12px">Every action Maya takes is recorded with its arguments and the issue's features.</p></div>
+      <div class="card" style="flex:1"><div class="label"><b>2</b> notice</div><h3 style="margin-top:16px">Two similar ones become a pattern</h3><p style="margin-top:12px">A ghost chip predicts the next step. A pattern card proposes a playbook.</p></div>
+      <div class="card" style="flex:1"><div class="label"><b>3</b> prove</div><h3 style="margin-top:16px">Backtest, shadow, tests</h3><p style="margin-top:12px">Replay on history, review in shadow mode, and every correction becomes a regression test.</p></div>
+      <div class="card" style="flex:1"><div class="label"><b>4</b> earn</div><h3 style="margin-top:16px">Autonomy on a trust ladder</h3><p style="margin-top:12px">Watch → Suggest → Draft → Act → Auto, gated by the framework's approval hook. Undo any run.</p></div>
+    </div>
+  </div>
+  <div class="grain"></div>
+</section>
+
+<!-- 5. Teach -->
+<section class="slide">
+  <div class="num label">04 · teach</div>
+  <div class="in">
+    <div class="label">no prompts, no workflow builder</div>
+    <h2 style="max-width:620px;font-size:72px">It learns from <span class="lime">what she already does.</span></h2>
+    <p class="lead" style="max-width:600px;font-size:28px">After two hand-triaged issues, Apprentice predicts the next step (Tab to accept) and proposes a playbook. It even notices teammate Bob does it differently and lets the team choose.</p>
+    <div style="position:absolute;left:96px;top:760px;display:flex;flex-direction:column;gap:18px">
+      <span class="chip">Pattern found · seen 2×</span>
+      <span class="chip" style="--c:var(--warn)">Your team handles this two ways</span>
+    </div>
+  </div>
+  <div class="shot" data-img="t33-3-tab3" data-z="1.15" data-fx="560" data-fy="400" style="left:780px;top:170px;width:1044px;height:760px"></div>
+  <div class="tag" style="left:780px;top:950px">demo data · local app · issue #33</div>
+  <div class="grain"></div>
+</section>
+
+<!-- 6. Backtest -->
+<section class="slide">
+  <div class="num label">05 · prove: backtest</div>
+  <div class="in">
+    <div class="label">before she trusts it, it replays her history</div>
+    <h2>Numbers, <span class="lime">not vibes.</span></h2>
+    <div class="row" style="margin-top:60px;gap:22px">
+      <div class="card" style="width:250px"><div class="label">considered</div><div class="stat" style="color:var(--text);text-shadow:none">29</div></div>
+      <div class="card" style="width:250px"><div class="label">matched</div><div class="stat" style="color:var(--text);text-shadow:none">17</div></div>
+      <div class="card" style="width:250px"><div class="label">agreed</div><div class="stat">14</div></div>
+      <div class="card" style="width:250px"><div class="label">false positives</div><div class="stat" style="color:var(--bad);text-shadow:none">3</div></div>
+    </div>
+    <p class="lead" style="max-width:1060px">Toggle a condition and the numbers update live against her own triage history. Loosening “has a version” raised matches to 21, but false positives jumped from 3 to 7. So she kept it tight.</p>
+  </div>
+  <div class="shot" data-img="p04-backtest-toggled" data-z="1.6" data-fx="1150" data-fy="230" style="left:1240px;top:330px;width:584px;height:520px"></div>
+  <div class="tag" style="left:1240px;top:870px">live backtest · after loosening</div>
+  <div class="grain"></div>
+</section>
+
+<!-- 7. Trust ladder -->
+<section class="slide">
+  <div class="orb" style="width:380px;height:380px;right:-90px;top:-110px;opacity:.7"></div>
+  <div class="num label">06 · earn: the trust ladder</div>
+  <div class="in">
+    <div class="label">autonomy is earned, one rung at a time</div>
+    <h2>Every promotion needs <span class="lime">evidence and a human click.</span></h2>
+    <div style="display:flex;align-items:flex-end;gap:16px;margin-top:40px;height:250px">
+      <div style="flex:1;text-align:center"><div style="height:50px" class="card"></div><div class="label" style="margin-top:14px">0 watch</div></div>
+      <div style="flex:1;text-align:center"><div style="height:95px;border-color:rgb(221 242 107 / .5);background:linear-gradient(180deg,rgb(221 242 107 / .25),rgb(221 242 107 / .05))" class="card"></div><div class="label" style="margin-top:14px">1 suggest · shadow</div></div>
+      <div style="flex:1;text-align:center"><div style="height:140px;border-color:rgb(221 242 107 / .6);background:linear-gradient(180deg,rgb(221 242 107 / .3),rgb(221 242 107 / .06))" class="card"></div><div class="label" style="margin-top:14px">2 draft · you approve</div></div>
+      <div style="flex:1;text-align:center"><div style="height:185px;border-color:rgb(221 242 107 / .75);background:linear-gradient(180deg,rgb(221 242 107 / .38),rgb(221 242 107 / .08));box-shadow:0 0 60px -10px rgb(221 242 107 / .6)" class="card"></div><div class="label" style="margin-top:14px;color:var(--text)">3 act · with undo</div></div>
+      <div style="flex:1;text-align:center"><div style="height:230px" class="card"></div><div class="label" style="margin-top:14px">4 auto</div></div>
+    </div>
+    <table style="margin-top:36px">
+      <tr><th>Promotion</th><th>Reviewed</th><th>Agreement</th><th>Executed</th><th>Always</th></tr>
+      <tr><td>Suggest → Draft</td><td>≥ 3</td><td>≥ 80%</td><td>—</td><td rowspan="3">every regression test passing + a human click. An override at Act or Auto steps it back one rung.</td></tr>
+      <tr><td>Draft → Act</td><td>≥ 5</td><td>≥ 85%</td><td>—</td></tr>
+      <tr><td>Act → Auto</td><td>≥ 8</td><td>≥ 90%</td><td>≥ 5</td></tr>
+    </table>
+  </div>
+  <div class="foot label">thresholds shown in demo mode · enforced by <b>needsApproval</b> on every domain action</div>
+  <div class="grain"></div>
+</section>
+
+<!-- 8. Real GitHub override -->
+<section class="slide">
+  <div class="num label">07 · correct: real data</div>
+  <div class="in">
+    <div class="label">github.com/BuilderIO/agent-native · imported read-only</div>
+    <h2 style="max-width:700px;font-size:72px">One correction <span class="lime">becomes a test.</span></h2>
+    <p class="lead" style="max-width:640px;font-size:28px">Real issue #8918 is a feature request, not a bug, so the rule got it wrong. Maya overrides it. Apprentice saves the correction as regression test #3 and steps the playbook back from Act to Draft until it passes.</p>
+    <div style="position:absolute;left:96px;top:760px;display:flex;flex-direction:column;gap:18px">
+      <span class="chip" style="--c:var(--ok)">Saved as test #3</span>
+      <span class="chip" style="--c:var(--warn)">Stepped back to Draft: override at autonomy</span>
+    </div>
+  </div>
+  <div class="shot" data-img="o01-real-8918" data-z="1.35" data-fx="560" data-fy="300" style="left:820px;top:150px;width:1004px;height:500px"></div>
+  <div class="shot" data-img="o05-stepped-back" data-z="1.45" data-fx="640" data-fy="200" style="left:980px;top:610px;width:844px;height:330px"></div>
+  <div class="tag" style="left:820px;top:960px">real issue #8918 · override → regression test</div>
+  <div class="grain"></div>
+</section>
+
+<!-- 9. Why + undo -->
+<section class="slide">
+  <div class="num label">08 · explain &amp; undo</div>
+  <div class="in">
+    <div class="label">trust needs a paper trail</div>
+    <h2 style="max-width:640px;font-size:72px">“Who taught you this?” <span class="lime">It shows you.</span></h2>
+    <p class="lead" style="max-width:600px;font-size:28px">Every action Apprentice takes links back to the conditions that matched and the exact demonstrations it learned from. At Act, each run is handled on its own and comes with one-click undo.</p>
+    <div style="position:absolute;left:96px;top:760px;display:flex;flex-direction:column;gap:18px">
+      <span class="chip">Taught by her: #31, #32</span>
+      <span class="chip">4 handled · each with undo</span>
+    </div>
+  </div>
+  <div class="shot" data-img="w02-why" data-z="1.3" data-fx="1200" data-fy="380" style="left:820px;top:150px;width:1004px;height:780px"></div>
+  <div class="grain"></div>
+</section>
+
+<!-- 10. Under the hood -->
+<section class="slide">
+  <div class="num label">09 · under the hood</div>
+  <div class="in">
+    <div class="label">how apprentice uses <b>agent-native</b></div>
+    <h2>The framework is the product.</h2>
+    <table style="margin-top:50px;width:1040px">
+      <tr><th>Agent-Native</th><th>What Apprentice does with it</th></tr>
+      <tr><td><code>defineAction</code></td><td>62 typed actions shared by the UI, the agent and MCP. Clicks are demonstrations.</td></tr>
+      <tr><td><code>needsApproval</code></td><td>The trust ladder: playbook steps ask before acting below Act.</td></tr>
+      <tr><td><code>view-screen</code></td><td>The agent sees the queue, issue, playbook or decision you're on.</td></tr>
+      <tr><td>Skills</td><td>triage-domain, apprentice-teacher, playbook-runner, shadow-reviewer.</td></tr>
+      <tr><td>MCP + automations</td><td>Review batches from Claude or ChatGPT; hourly autopilot + digest.</td></tr>
+      <tr><td>Export</td><td>Every playbook exports as a portable SKILL.md any agent can use.</td></tr>
+    </table>
+  </div>
+  <div style="position:absolute;left:1220px;top:420px;z-index:2" class="code"><span class="c">// services/approval.ts</span>
+if (pb.trustLevel <= LEVELS.DRAFT)
+  return true;
+if (pb.trustLevel === <span class="h">LEVELS.ACT</span>)
+  return !!step?.checkpoint
+    || destructive;
+return false;</div>
+  <div class="grain"></div>
+</section>
+
+<!-- 11. Impact -->
+<section class="slide">
+  <div class="num label">10 · impact</div>
+  <div class="in">
+    <div class="label">insights · numbers from the recorded demo session</div>
+    <h2>She only sees <span class="lime">what needs her.</span></h2>
+    <div class="row" style="margin-top:60px;gap:22px">
+      <div class="card" style="width:330px"><div class="label">handled by apprentice</div><div class="stat">4</div></div>
+      <div class="card" style="width:330px"><div class="label">est. time saved</div><div class="stat">11m</div></div>
+      <div class="card" style="width:330px"><div class="label">agreement with you</div><div class="stat">83%</div></div>
+    </div>
+    <p class="lead" style="max-width:1050px">Autopilot runs the active playbooks on new issues and posts a digest. Exceptions are grouped by why they still need a human. Time saved is an estimate from her own median handling time.</p>
+  </div>
+  <div class="shot" data-img="i01-insights" data-z="1.15" data-fx="560" data-fy="330" style="left:1180px;top:330px;width:644px;height:560px"></div>
+  <div class="grain"></div>
+</section>
+
+<!-- 12. Built & verified -->
+<section class="slide">
+  <div class="num label">11 · built &amp; verified</div>
+  <div class="in">
+    <div class="label">try it, read it, run it</div>
+    <h2>Real, running, <span class="lime">tested.</span></h2>
+    <div class="row" style="margin-top:60px;gap:22px">
+      <div class="card" style="flex:1"><div class="stat">62</div><p style="margin-top:12px">typed actions</p></div>
+      <div class="card" style="flex:1"><div class="stat">55</div><p style="margin-top:12px">tests passing, incl. the full learn → prove → act → undo loop</p></div>
+      <div class="card" style="flex:1"><div class="stat">30</div><p style="margin-top:12px">real GitHub issues imported in the demo</p></div>
+    </div>
+    <table style="margin-top:50px">
+      <tr><th>Judging criterion</th><th>Where to look</th></tr>
+      <tr><td>Usefulness &amp; execution · 40%</td><td>Complete flow: teach → backtest → shadow → promote → act → explain → undo, on real issues</td></tr>
+      <tr><td>Creativity &amp; design · 20%</td><td>Ghost-chip prediction, live backtest toggles, trust-ladder UI, keyboard-first triage</td></tr>
+      <tr><td>Innovation · 20%</td><td>Learning from typed demonstrations; corrections become regression tests</td></tr>
+      <tr><td>Use of Agent-Native · 20%</td><td>Shared actions, needsApproval as the trust ladder, view-screen, skills, MCP, automations</td></tr>
+    </table>
+  </div>
+  <div class="grain"></div>
+</section>
+
+<!-- 13. Close -->
+<section class="slide">
+  <div class="orb" style="width:900px;height:900px;right:-220px;top:280px"></div>
+  <div class="in">
+    <div class="brand"><svg width="64" height="64" viewBox="0 0 64 64"><rect x=".5" y=".5" width="63" height="63" rx="14" fill="#13160E" stroke="#2A2F1D"/><path d="M14 46 L28 16 h8 L50 46 h-9 l-3-7 H26 l-3 7Z M29 31 h6 l-3-8Z" fill="#DDF26B"/></svg>Apprentice</div>
+    <h1 style="margin-top:150px">Show it once.<br><span class="lime">Delegate forever.</span></h1>
+    <div style="margin-top:80px;display:flex;flex-direction:column;gap:16px" class="label">
+      <span style="color:var(--text);font-size:24px">apprentice-agent.onrender.com</span>
+      <span style="color:var(--text);font-size:24px">apprentice-agent.pages.dev</span>
+      <span style="color:var(--text);font-size:24px">github.com/LSUDOKO/Apprentice</span>
+    </div>
+  </div>
+  <div class="foot label">built with <b>agent-native</b> · builder.io agent-native hackathon 2026</div>
+  <div class="grain"></div>
+</section>
+
+<script>
+  // Frame each screenshot on a focus point (coords in the app's 1440×810 viewport).
+  for (const el of document.querySelectorAll('.shot[data-img]')) {
+    const W = el.clientWidth, H = el.clientHeight;
+    const z = +el.dataset.z, fx = +el.dataset.fx, fy = +el.dataset.fy;
+    const base = Math.max(W / 1440, H / 810) * z;
+    const iw = 1440 * base, ih = 810 * base;
+    const left = Math.min(0, Math.max(W - iw, W / 2 - fx * base));
+    const top = Math.min(0, Math.max(H - ih, H / 2 - fy * base));
+    const img = new Image();
+    img.src = `img/${el.dataset.img}.jpg`;
+    Object.assign(img.style, { width: iw + 'px', height: ih + 'px', left: left + 'px', top: top + 'px' });
+    el.appendChild(img);
+  }
+</script>
+</body>
+</html>

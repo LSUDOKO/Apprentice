@@ -1,0 +1,10 @@
+import { open } from './lib.mjs';
+const { b, p } = await open();
+await p.goto('http://localhost:8080/preferences'); await p.getByPlaceholder('owner/name').waitFor();
+await p.getByPlaceholder('owner/name').fill('BuilderIO/agent-native');
+await p.getByRole('button', { name: 'Import', exact: true }).click();
+await p.waitForTimeout(9000);
+console.log('TOASTS', await p.locator('[data-sonner-toast]').allInnerTexts());
+await p.goto('http://localhost:8080/issues?filter=untriaged'); await p.waitForTimeout(4000);
+console.log((await p.locator('main').innerText()).slice(0, 2500));
+await b.close();

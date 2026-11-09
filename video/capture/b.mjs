@@ -1,0 +1,16 @@
+import { open, shot, toast } from './lib.mjs';
+const { b, p } = await open();
+const w = (ms) => p.waitForTimeout(ms);
+await p.goto('http://localhost:8080/issues/seed-031?filter=untriaged'); await p.getByText('Recurring job runs twice').nth(1).waitFor({timeout:30000}).catch(()=>{}); await w(2500);
+await shot(p, 'b01-issue31', p.getByRole('button', { name: '+ needs-info' }));
+await p.getByRole('button', { name: '+ needs-info' }).click(); await w(1500);
+await shot(p, 'b02-31-needsinfo', p.getByRole('button', { name: '+ bug' }));
+await p.getByRole('button', { name: '+ bug' }).click(); await w(1500);
+await shot(p, 'b03-31-bug', p.getByRole('button', { name: /Request repro/ }));
+await p.getByRole('button', { name: /Request repro/ }).click(); await w(1500);
+console.log('after repro dialog?', await p.getByRole('dialog').count(), await toast(p));
+await shot(p, 'b04-31-repro', p.getByRole('dialog').first());
+console.log((await p.locator('body').innerText()).slice(0, 400));
+const sels = await p.locator('main select').evaluateAll(els => els.map(e => [...e.options].map(o => o.value + '=' + o.text)));
+console.log(JSON.stringify(sels));
+await b.close();

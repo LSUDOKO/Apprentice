@@ -1,0 +1,196 @@
+{
+ "fps": 60,
+ "scenes": [
+  {
+   "id": "hook",
+   "vo": [
+    "h1",
+    "h2"
+   ],
+   "lead": 0.6,
+   "gap": 0.5,
+   "tail": 0.9,
+   "in": "cut"
+  },
+  {
+   "id": "title",
+   "vo": [
+    "t1"
+   ],
+   "lead": 1.7,
+   "gap": 0,
+   "tail": 2.6,
+   "in": "cut"
+  },
+  {
+   "id": "problem",
+   "vo": [
+    "p1",
+    "p2",
+    "p3",
+    "p4"
+   ],
+   "lead": 0.4,
+   "gap": 0.45,
+   "tail": 0.4,
+   "in": "block"
+  },
+  {
+   "id": "breaker1",
+   "vo": [],
+   "lead": 1.7,
+   "gap": 0,
+   "tail": 0,
+   "in": "cut"
+  },
+  {
+   "id": "turn",
+   "vo": [
+    "s1"
+   ],
+   "lead": 0.5,
+   "gap": 0,
+   "tail": 1.7,
+   "in": "whip"
+  },
+  {
+   "id": "w-import",
+   "vo": [
+    "w1"
+   ],
+   "lead": 0.3,
+   "gap": 0,
+   "tail": 0.6,
+   "in": "roll"
+  },
+  {
+   "id": "w-teach31",
+   "vo": [
+    "w2"
+   ],
+   "lead": 0.2,
+   "gap": 0,
+   "tail": 0.4,
+   "in": "wipe"
+  },
+  {
+   "id": "w-teach32",
+   "vo": [
+    "w3"
+   ],
+   "lead": 0.1,
+   "gap": 0,
+   "tail": 0.3,
+   "in": "jump"
+  },
+  {
+   "id": "w-ghost",
+   "vo": [
+    "w4"
+   ],
+   "lead": 0.1,
+   "gap": 0,
+   "tail": 1.2,
+   "in": "cut"
+  },
+  {
+   "id": "w-pattern",
+   "vo": [
+    "w5",
+    "w6"
+   ],
+   "lead": 0.2,
+   "gap": 0.35,
+   "tail": 0.5,
+   "in": "zoom"
+  },
+  {
+   "id": "w-backtest",
+   "vo": [
+    "w7",
+    "w8"
+   ],
+   "lead": 0.2,
+   "gap": 0.4,
+   "tail": 0.6,
+   "in": "zoom"
+  },
+  {
+   "id": "w-shadow",
+   "vo": [
+    "w9",
+    "w10"
+   ],
+   "lead": 0.2,
+   "gap": 0.35,
+   "tail": 0.6,
+   "in": "whip"
+  },
+  {
+   "id": "w-act",
+   "vo": [
+    "w11",
+    "w12"
+   ],
+   "lead": 0.2,
+   "gap": 0.4,
+   "tail": 0.5,
+   "in": "wipe"
+  },
+  {
+   "id": "w-override",
+   "vo": [
+    "w13",
+    "w14"
+   ],
+   "lead": 0.2,
+   "gap": 0.4,
+   "tail": 0.8,
+   "in": "glitch"
+  },
+  {
+   "id": "hood",
+   "vo": [
+    "u1",
+    "u2",
+    "u3",
+    "u4"
+   ],
+   "lead": 0.5,
+   "gap": 0.55,
+   "tail": 3.0,
+   "in": "dissolve"
+  },
+  {
+   "id": "impact",
+   "vo": [
+    "i1",
+    "i2",
+    "i3"
+   ],
+   "lead": 0.3,
+   "gap": 0.5,
+   "tail": 3.0,
+   "in": "block"
+  },
+  {
+   "id": "breaker2",
+   "vo": [],
+   "lead": 1.4,
+   "gap": 0,
+   "tail": 0,
+   "in": "cut"
+  },
+  {
+   "id": "outro",
+   "vo": [
+    "o1",
+    "o2"
+   ],
+   "lead": 0.4,
+   "gap": 0.9,
+   "tail": 4.8,
+   "in": "dissolve"
+  }
+ ]
+}
