@@ -15,7 +15,7 @@ Spec: `apprentice-build-kit/` (docs 00–13). Framework: `@agent-native/core` **
 | 6 Scale out (F13, F16, F17, F20) | Done | `run-autopilot`, `build-digest`, `install-autopilot` (Agent Resources job), Insights + digests, MCP catalog + `review-batch` `embedRoute`, export skill (zip) |
 | 7 Wow (F14, F15, F19) | Done | Lessons with Recorder report + narration mic, voice intents in AGENTS.md, Team-mode conflict card + `resolve-conflict` |
 | 7 Wow (F18 sub-agent backtests) | Not built | Judgments are resolved sequentially by the agent (`resolve-judgments`) |
-| 8 Polish | Partial | Light theme reviewed on every screen, dark theme spot-checked (playbook editor); keyboard map + `?` overlay; empty/loading/error states; WCAG labels on all inputs. |
+| 8 Polish | Partial | Light theme reviewed in the browser on every screen except Compare; dark theme spot-checked (playbook editor); keyboard map + `?` overlay; empty/loading/error states. |
 | 9 Stretch (F21–F23) | Not started | By design (cut order) |
 
 ## Verification
@@ -44,6 +44,8 @@ Spec: `apprentice-build-kit/` (docs 00–13). Framework: `@agent-native/core` **
 | 16 | Export skill zip | ✅ zip with `SKILL.md` + `playbook.json` downloaded and verified with `unzip` (dependency-free writer in `app/lib/zip.ts`) |
 | 17 | MCP inline review card | ⏳ needs a connected host; deep link always works |
 | 18 | Team-mode conflict card + resolve | ✅ card shows both approaches; "Make playbook (my way)" records the team decision in the description. "Use bob's way" (`resolve-conflict`) was not clicked in this session |
+
+Also verified in the browser: **lesson recording** (Record → triage #67 → narration → Stop: lesson saved with 6 Recorder events, the narration and the captured demonstration).
 
 ### Needs an LLM key (not verified here)
 Agent chat replies, the Draft-level agent Approve/Deny pause, the generative-UI tuner, `resolve-judgments` by the agent, and `pnpm eval`. Add `ANTHROPIC_API_KEY` (or OpenAI or Builder) to `.env`.
