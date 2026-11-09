@@ -47,6 +47,15 @@ Spec: `apprentice-build-kit/` (docs 00–13). Framework: `@agent-native/core` **
 
 Also verified in the browser: **lesson recording** (Record → triage #67 → narration → Stop: lesson saved with 6 Recorder events, the narration and the captured demonstration).
 
+### Deployment
+
+- App: https://apprentice-agent.onrender.com (Render, Node, `NITRO_PRESET=render_com`), database on Neon Postgres. Verified: sign-up, **Load demo data**, Queue, Insights and Chat routes return 200.
+- Website: https://apprentice-agent.pages.dev (Cloudflare Pages).
+
+### Agent with Groq
+
+With `GROQ_API_KEY` set, the framework picks Groq and the chat runs `openai/gpt-oss-120b`. The free Groq tier caps tokens per minute at 8,000 and one Apprentice agent turn requests about 20,000, so the request is rejected (`rate_limit_exceeded`). Agent features need a paid Groq tier or another provider key.
+
 ### Needs an LLM key (not verified here)
 Agent chat replies, the Draft-level agent Approve/Deny pause, the generative-UI tuner, `resolve-judgments` by the agent, and `pnpm eval`. Add `ANTHROPIC_API_KEY` (or `OPENAI_API_KEY`, `GROQ_API_KEY`, or connect Builder) to `.env`.
 

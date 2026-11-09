@@ -14,6 +14,7 @@
 |---|---|
 | `@fontsource-variable/geist`, `@fontsource-variable/geist-mono` | Self-hosted fonts for the dark "Eclipse" design |
 | `framer-motion`, `vite`, `@vitejs/plugin-react` (in `landing/` only) | Landing site scroll animations and build |
+| `yjs` | Declared directly so the production server bundle resolves it under pnpm (it was already a transitive dependency of the framework) |
 
 ## Built new
 
@@ -25,6 +26,9 @@
 - **Agent:** `AGENTS.md` Apprentice section, system prompt, primary tool list, four skills (`triage-domain`, `apprentice-teacher`, `playbook-runner`, `shadow-reviewer`), autopilot job template, `evals/apprentice.eval.ts`.
 - **Tests:** 55 Vitest tests (engine units + full-loop integration on PGlite).
 - **Landing site** (`landing/`): Vite + React + Framer Motion, scroll-driven sections, deployed to Cloudflare Pages at https://apprentice-agent.pages.dev.
+- **Insights dashboard charts** (`app/components/apprentice/Charts.tsx`): hand-written SVG area, line, donut, ring and staircase charts; no chart library.
+- **Deployment:** Render web service on Neon Postgres (https://apprentice-agent.onrender.com).
+- **Framework patch** (`patches/@agent-native__core@0.226.0.patch`): adds Groq `openai/gpt-oss-120b` (and two others) to the framework's Groq model list and makes it the Groq default, because the listed llama models are not served to new Groq keys.
 - **Seed data generator** (`scripts/generate-seed.ts`) and committed JSON: 68 invented issues plus demonstration history.
 
 ## Changed in the template

@@ -2,6 +2,7 @@ import { motion, useMotionValueEvent, useReducedMotion, useScroll, useTransform,
 import { useEffect, useMemo, useRef, useState } from "react";
 
 const REPO = "https://github.com/LSUDOKO/Apprentice";
+const APP = "https://apprentice-agent.onrender.com";
 const GLYPHS = "ABCDEFGHJKLMNPQRSTUVWXYZ0123456789#%&*+=<>/\\[]{}$@";
 
 function randomGlyph(): string {
@@ -158,11 +159,11 @@ function Hero() {
           The agent that learns your job by watching you do it. <span>It proves what it learned, then earns the right to do it for you.</span>
         </motion.p>
         <motion.div className="hero-cta" initial={reduce ? false : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2, duration: 0.8 }}>
-          <a className="btn btn-halo" href="#learn">
-            See how it learns
+          <a className="btn btn-halo" href={APP}>
+            Try the live app
           </a>
-          <a className="btn" href={REPO}>
-            Read the code
+          <a className="btn" href="#learn">
+            See how it learns
           </a>
         </motion.div>
       </motion.div>
@@ -459,11 +460,11 @@ function Finale() {
           Show it once. Delegate forever.
         </h2>
         <div className="hero-cta">
-          <a className="btn btn-halo" href={REPO}>
-            Get the code on GitHub
+          <a className="btn btn-halo" href={APP}>
+            Try the live app
           </a>
-          <a className="btn" href={`${REPO}#run-it-locally`}>
-            Run it locally
+          <a className="btn" href={REPO}>
+            Get the code on GitHub
           </a>
         </div>
       </div>
