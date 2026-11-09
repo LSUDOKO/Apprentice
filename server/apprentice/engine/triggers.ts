@@ -83,7 +83,10 @@ export function describeCondition(c: Condition): string {
     if (c.field === "hasVersion") return positive ? "a version is mentioned" : "no version is mentioned";
     if (c.field === "hasRepro") return positive ? "it has reproduction steps" : "no reproduction steps";
     if (c.field === "hasStackTrace") return positive ? "it includes a stack trace" : "no stack trace";
-    return positive ? label : `not ${label}`;
+    if (positive) return label;
+    if (label.startsWith("has ")) return label.replace(/^has (a )?/, "no ");
+    if (label.startsWith("looks like")) return label.replace("looks like", "doesn't look like");
+    return `not ${label}`;
   }
   switch (c.op) {
     case "eq":

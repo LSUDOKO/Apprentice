@@ -31,11 +31,13 @@ export default function Insights() {
       <div className="grid gap-6 lg:grid-cols-2">
         <section className="rounded-[10px] border border-border bg-card p-4" aria-labelledby="weekly">
           <h2 id="weekly" className="text-sm font-medium">Minutes saved per week (estimated)</h2>
-          <div className="mt-4 flex h-36 items-end gap-3" role="img" aria-label={data.weekly.map((w) => `${w.weekStart}: ${w.minutesSaved} minutes`).join(", ")}>
+          <div className="mt-4 flex items-end gap-3" role="img" aria-label={data.weekly.map((w) => `${w.weekStart}: ${w.minutesSaved} minutes`).join(", ")}>
             {data.weekly.map((w) => (
               <div key={w.weekStart} className="flex flex-1 flex-col items-center gap-1">
                 <span className="tabular text-[11px] text-muted-foreground">{w.minutesSaved}</span>
-                <div className="w-full rounded-t-sm bg-primary/80" style={{ height: `${(w.minutesSaved / maxWeek) * 100}%`, minHeight: w.minutesSaved ? 3 : 1 }} />
+                <div className="flex h-24 w-full items-end">
+                  <div className="w-full rounded-t-sm bg-primary/80" style={{ height: `${(w.minutesSaved / maxWeek) * 100}%`, minHeight: w.minutesSaved ? 3 : 1 }} />
+                </div>
                 <span className="font-mono text-[10px] text-muted-foreground">{w.weekStart.slice(5)}</span>
               </div>
             ))}

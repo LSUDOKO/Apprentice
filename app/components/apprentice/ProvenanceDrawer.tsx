@@ -4,7 +4,7 @@ import { Link } from "react-router";
 
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 
-import { PlainSteps } from "./Steps";
+import { InlineMd, PlainSteps } from "./Steps";
 import { ErrorState, LEVEL_NAMES, RowsSkeleton, timeAgo } from "./primitives";
 
 function Body({ decisionId }: { decisionId: string }) {
@@ -37,7 +37,7 @@ function Body({ decisionId }: { decisionId: string }) {
             <li key={i} className="flex items-start gap-2">
               {c.pass ? <IconCircleCheck className="mt-0.5 size-4 text-ok" aria-label="passed" /> : <IconCircleX className="mt-0.5 size-4 text-bad" aria-label="failed" />}
               <span>
-                {c.text} <span className="font-mono text-xs text-muted-foreground">(was {String(c.actual ?? "empty")})</span>
+                <InlineMd text={c.text} /> <span className="font-mono text-xs text-muted-foreground">(was {String(c.actual ?? "empty")})</span>
               </span>
             </li>
           ))}

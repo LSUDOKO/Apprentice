@@ -13,7 +13,10 @@
     "action": "agent-native action",
     "script": "agent-native script",
     "test": "vitest --run --passWithNoTests",
-    "agent-native:doctor": "agent-native doctor"
+    "agent-native:doctor": "agent-native doctor",
+    "eval": "agent-native eval",
+    "seed:generate": "tsx scripts/generate-seed.ts",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@agent-native/agentkit": "0.226.0",
